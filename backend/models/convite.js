@@ -1,54 +1,48 @@
 var Convite = function(id, solicitante, convidado, texto, pendente) {
-    var _id;
-    var _solicitante;
-    var _convidado;
-    var _texto;
-    var _pendente;
-
-    _id = id;
-    _solicitante = solicitante;
-    _convidado = convidado;
-    _texto = texto;
-    _pendente = pendente;
+    this._id = id;
+    this._solicitante = solicitante;
+    this._convidado = convidado;
+    this._texto = texto;
+    this._pendente = pendente;
 
     this.getId = function() {
-        return _id;
+        return this._id;
     }
 
     this.getSolicitante = function() {
-        return _solicitante;
+        return this._solicitante;
     }
 
     this.getConvidado = function() {
-        return _convidado;
+        return this._convidado;
     }
 
     this.getTexto = function() {
-        return _texto;
+        return this._texto;
     }
 
     this.isPendente() {
-        return _pendente;
+        return this._pendente;
     }
 
     this.setId = function(novoId) {
-        _id = novoId;
+        this._id = novoId;
     }
 
     this.setSolicitante = function(novoSolicitante) {
-        _solicitante = novoSolicitante;
+        this._solicitante = novoSolicitante;
     }
 
     this.setConvidado = function(novoConvidado) {
-        _convidado = novoConvidado;
+        this._convidado = novoConvidado;
     }
 
     this.setTexto = function(novoTexto) {
-        _texto = novoTexto;
+        this._texto = novoTexto;
     }
 
     this.setPendente = function(novoPendente) {
-        _pendente = novoPendente;
+        this._pendente = novoPendente;
     }
 
 }

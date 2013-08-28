@@ -1,44 +1,39 @@
 var Universo = function(id, nome, privado, administrador) {
-	var _id;
-	var _nome;
-	var _privado;
-	var _administrador;
-	
-	_id = id;
-	_nome = nome;
-	_privado = privado;
-	_administrador = administrador;
+	this._id = id;
+    this._nome = nome;
+    this._privado = privado;
+    this._administrador = administrador;
 	
 	this.getId = function() {
-		return _id;
+		return this._id;
 	}
 	
 	this.getNome = function() {
-		return _nome;
+		return this._nome;
 	}
 	
 	this.getPrivado = function() {
-		return _privado;
+		return this._privado;
 	}
 	
 	this.getAdministrador = function() {
-		return _administrador;
+		return this._administrador;
 	}
 	
 	this.setId = function(novoId) {
-		_id = novoId;
+        this._id = novoId;
 	}
 	
 	this.setNome = function(novoNome) {
-		_nome = novoNome;
+        this._nome = novoNome;
 	}
 	
 	this.setPrivado = function(novoPrivado) {
-		_privado = novoPrivado;
+        this._privado = novoPrivado;
 	}
 	
 	this.setAdministrador = function(novoAdministrador) {
-		_administrador = novoAdministrador;
+        this._administrador = novoAdministrador;
 	}
 	
 }

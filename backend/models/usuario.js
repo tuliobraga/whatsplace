@@ -1,54 +1,80 @@
-var Usuario = function(id, email, nome, avatar, localAtual) {
-    var _id;
-    var _email;
-    var _nome;
-    var _avatar;
-    var _localAtual;
-
-    _id = id;
-    _email = email;
-    _nome = nome;
-    _avatar = avatar;
-    _localAtual = localAtual;
+var Usuario = function(id, email, nome, senha, avatar, codigoConfirmacao, localAtual) {
+    this._id = id;
+    this._email = email;
+    this._nome = nome;
+    this._senha = senha;
+    this._avatar = avatar;
+    this._codigoConfirmacao = codigoConfirmacao;
+    this._localAtual = localAtual;
 
     this.getId = function() {
-        return _id;
+        return this._id;
     }
 
     this.getEmail = function() {
-        return _email;
+        return this._email;
     }
 
     this.getNome = function() {
-        return _nome;
+        return this._nome;
+    }
+
+    this.getSenha = function() {
+        return this._senha;
     }
 
     this.getAvatar = function() {
-        return _avatar;
+        return this._avatar;
+    }
+
+    this.getCodigoConfirmacao = function() {
+        return this._codigoConfirmacao;
     }
 
     this.getLocalAtual = function() {
-        return _localAtual;
+        return this._localAtual;
     }
 
     this.setId = function(novoId) {
-        _id = novoId;
+        this._id = novoId;
     }
 
     this.setEmail = function(novoEmail) {
-        _texto = novoEmail;
+        this._texto = novoEmail;
     }
 
     this.setNome = function(novoNome) {
-        _solicitante = novoNome;
+        this._solicitante = novoNome;
+    }
+
+    this.setSenha = function(novaSenha) {
+        this._senha = novaSenha;
     }
 
     this.setAvatar = function(novoAvatar) {
-        _convidado = novoAvatar;
+        this._convidado = novoAvatar;
+    }
+
+    this.setCodigoConfirmacao = function(novoCodigoConfirmacao) {
+        this._codigoConfirmacao = novoCodigoConfirmacao;
     }
 
     this.setLocalAtual = function(novoLocalAtual) {
-        _pendente = novoLocalAtual;
+        this._pendente = novoLocalAtual;
+    }
+
+
+    this.toJSON() = function() {
+        var u = {
+            id: this.getId(),
+            nome: this.getNome(),
+            email: this.getEmail(),
+            senha: this.getSenha(),
+            avatar: this.getAvatar(),
+            codigoConfirmacao: this.getCodigoConfirmacao(),
+            localAtual: this.getLocalAtual()
+        };
+        return u;
     }
 
 }

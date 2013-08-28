@@ -1,54 +1,48 @@
 var Mensagem = function(id, texto, remetente, destinatario, horario) {
-    var _id;
-    var _texto;
-    var _remetente;
-    var _destinatario;
-    var _horario;
-
-    _id = id;
-    _texto = texto;
-    _remetente = remetente;
-    _destinatario = destinatario;
-    _horario = horario;
+    this._id = id;
+    this._texto = texto;
+    this._remetente = remetente;
+    this._destinatario = destinatario;
+    this._horario = horario;
 
     this.getId = function() {
-        return _id;
+        return this._id;
     }
 
     this.getTexto = function() {
-        return _texto;
+        return this._texto;
     }
 
     this.getRemetente = function() {
-        return _remetente;
+        return this._remetente;
     }
 
     this.getDestinatario = function() {
-        return _destinatario;
+        return this._destinatario;
     }
 
     this.getHorario = function() {
-        return _horario;
+        return this._horario;
     }
 
     this.setId = function(novoId) {
-        _id = novoId;
+        this._id = novoId;
     }
 
     this.setTexto = function(novoTexto) {
-        _texto = novoTexto;
+        this._texto = novoTexto;
     }
 
     this.setRemetente = function(novoRemetente) {
-        _solicitante = novoRemetente;
+        this._solicitante = novoRemetente;
     }
 
     this.setDestinatario = function(novoDestinatario) {
-        _convidado = novoDestinatario;
+        this._convidado = novoDestinatario;
     }
 
     this.setHorario = function(novoHorario) {
-        _pendente = novoHorario;
+        this._pendente = novoHorario;
     }
 
 }
