@@ -44,7 +44,7 @@ var Usuario = function(id, email, nome, senha, avatar, codigoConfirmacao, localA
     }
 
     this.setNome = function(novoNome) {
-        this._solicitante = novoNome;
+        this._universo = novoNome;
     }
 
     this.setSenha = function(novaSenha) {

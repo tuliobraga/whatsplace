@@ -1,16 +1,11 @@
-var Convite = function(id, solicitante, convidado, texto, pendente) {
-    this._id = id;
-    this._solicitante = solicitante;
+var Convite = function(universo, convidado, texto, pendente) {
+    this._universo = universo;
     this._convidado = convidado;
     this._texto = texto;
     this._pendente = pendente;
 
-    this.getId = function() {
-        return this._id;
-    }
-
-    this.getSolicitante = function() {
-        return this._solicitante;
+    this.getUniverso = function() {
+        return this._universo;
     }
 
     this.getConvidado = function() {
@@ -25,12 +20,8 @@ var Convite = function(id, solicitante, convidado, texto, pendente) {
         return this._pendente;
     }
 
-    this.setId = function(novoId) {
-        this._id = novoId;
-    }
-
-    this.setSolicitante = function(novoSolicitante) {
-        this._solicitante = novoSolicitante;
+    this.setUniverso = function(novoUniverso) {
+        this._universo = novoUniverso;
     }
 
     this.setConvidado = function(novoConvidado) {

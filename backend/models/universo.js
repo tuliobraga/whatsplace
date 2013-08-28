@@ -12,7 +12,7 @@ var Universo = function(id, nome, privado, administrador) {
 		return this._nome;
 	}
 	
-	this.getPrivado = function() {
+	this.isPrivado = function() {
 		return this._privado;
 	}
 	
@@ -35,5 +35,15 @@ var Universo = function(id, nome, privado, administrador) {
 	this.setAdministrador = function(novoAdministrador) {
         this._administrador = novoAdministrador;
 	}
+
+    this.toJSON() = function() {
+        var u = {
+            id: this.getId(),
+            nome: this.getNome(),
+            private: this.isPrivado(),
+            administrador: this.getAdministrador().toJSON()
+        };
+        return u;
+    }
 	
 }

@@ -94,15 +94,20 @@ exports.insert = function insertUser(req, res) {
     // connect to database
     var con = mysql.getConnection();
     usuarioDAO.insert(con, usuario, function(id) {
-        usuario.setId(id);
-        sendConfirmationCode(usuario.getEmail(), usuario.getCodigoConfirmacao(), function(err) {
-            if (!err) {
-                res.send(200);
-            }
-            else {
-                res.send(500);
-            }
-        });
+        if (id) {
+            usuario.setId(id);
+            sendConfirmationCode(usuario.getEmail(), usuario.getCodigoConfirmacao(), function(err) {
+                if (!err) {
+                    res.send(200);
+                }
+                else {
+                    res.send(500);
+                }
+            });
+        }
+        else {
+            res.send(500);
+        }
     });
 }
 

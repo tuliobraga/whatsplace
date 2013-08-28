@@ -34,7 +34,7 @@ var Mensagem = function(id, texto, remetente, destinatario, horario) {
     }
 
     this.setRemetente = function(novoRemetente) {
-        this._solicitante = novoRemetente;
+        this._universo = novoRemetente;
     }
 
     this.setDestinatario = function(novoDestinatario) {

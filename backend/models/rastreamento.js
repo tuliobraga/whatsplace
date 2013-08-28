@@ -34,7 +34,7 @@ var Rastreamento = function(id, entrada, saida, local, usuario) {
     }
 
     this.setSaida = function(novoSaida) {
-        this._solicitante = novoSaida;
+        this._universo = novoSaida;
     }
 
     this.setLocal = function(novoLocal) {

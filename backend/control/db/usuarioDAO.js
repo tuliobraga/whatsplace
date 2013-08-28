@@ -1,18 +1,25 @@
-const GET = 'SELECT usuario.* FROM usuario WHERE usuario.id = ?';
-const GET_PASS = 'SELECT usuario.* FROM usuario WHERE usuario.email = ? AND usuario.senha = PASSWORD(?)';
-const GET_CODE = 'SELECT usuario.* FROM usuario WHERE usuario.email = ? AND usuario.codigo_confirmacao = ?';
-const INSERT = 'INSERT INTO usuario (nome, email, senha, codigo_confirmacao) VALUES (?, ?, PASSWORD(?), ?)';
-const UPDATE = 'UPDATE usuario SET nome = ?, email = ?, codigo_confirmacao = ?, localAtual = ? WHERE id = ?';
-const UPDATE_CONF_COD = 'UPDATE usuario SET codigo_confirmacao = ? WHERE email = ?';
+const GET = 'SELECT usuario.* FROM usuario ' +
+    'WHERE usuario.id_usuario = ?';
+const GET_PASS = 'SELECT usuario.* FROM usuario ' +
+    'WHERE usuario.email_usuario = ? AND usuario.senha_usuario = PASSWORD(?)';
+const GET_CODE = 'SELECT usuario.* FROM usuario ' +
+    'WHERE usuario.email_usuario = ? AND usuario.codigo_confirmacao_usuario = ?';
+const INSERT = 'INSERT INTO usuario (nome_usuario, email_usuario, senha_usuario, codigo_confirmacao_usuario) ' +
+    'VALUES (?, ?, PASSWORD(?), ?)';
+const UPDATE = 'UPDATE usuario SET nome_usuario = ?, email_usuario = ?, ' +
+    'codigo_confirmacao_usuario = ?, localAtual_usuario = ? ' +
+    'WHERE id_usuario = ?';
+const UPDATE_CONF_COD = 'UPDATE usuario SET codigo_confirmacao_usuario = ? ' +
+    'WHERE email_usuario = ?';
 
-function extrairUsuario(obj) {
+exports.extrairUsuario = function extrairUsuario(obj) {
     return new Usuario(
-        obj.id,
-        obj.nome,
-        obj.senha,
-        obj.avatar,
-        obj.codigoConfirmacao,
-        obj.localAtual);
+        obj.id_usuario,
+        obj.nome_usuario,
+        obj.senha_usuario,
+        obj.avatar_usuario,
+        obj.codigoConfirmacao_usuario,
+        obj.localAtual_usuario);
 }
 
 exports.get = function getUser(con, id, callback) {
