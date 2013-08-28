@@ -31,7 +31,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/login', routes.login);
-app.get('/in/login', user.authenticate);
+app.post('/in/login', user.authenticate);
 app.get('/nova-conta', routes.novaConta);
 
 http.createServer(app).listen(app.get('port'), function(){

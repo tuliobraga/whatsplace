@@ -46,5 +46,5 @@ Request.defaultSuccessHandler = function(response) {
 }
 
 Request.defaultErrorHandler = function(response) {
-	if(response.message) alert(response.message);
+	alert(response.responseText);
 }
