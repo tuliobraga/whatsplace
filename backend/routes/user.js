@@ -5,7 +5,7 @@ var usuarioDAO = require('../control/db/usuarioDAO');
 exports.authenticate = function(req, res) {
     var email = req.body.email;
     var senha = req.body.senha;
-res.send(500, 'E-mail ou senha inválidos');
+
     // connect to database
     var con = mysql.getConnection();
     usuarioDAO.getWithPass(con, email, senha, function(u) {
