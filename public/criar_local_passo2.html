@@ -38,9 +38,9 @@
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../bootstrap/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../bootstrap/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../bootstrap/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="../bootstrap/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="../bootstrap/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../bootstrap/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../bootstrap/ico/favicon.png">
   </head>
 
   <body>
@@ -66,30 +66,33 @@
     </div>
 
     <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span6">
-            <label>Usar localização atual?</label>
-            <select class="span12">
-                <option selected>Sim</option>
-                <option>Não</option>
-            </select>
-        </div>    
-      </div><!--/row-->
-      <hr>
-      <div class="row-fluid">
-        <div class="span12">
-            <label>Local</label>
-            <input type="text" class="span12" placeholder="Ex.: Av. Amazonas, 5678, Belo Horizonte">
-        </div>    
-      </div><!--/row-->
-      <hr>
-      MAPA
-      <hr>
-      <div class="row-fluid">
-        <div class="span12">
-            <input type="button" class="btn btn-primary span12" value="Criar">
-        </div>    
-      </div><!--/row-->
+        <form name="criarLocal2" id="criarLocal2">
+        <div class="row-fluid">
+          <div class="span6">
+              <label>Usar localização atual?</label>
+              <select name="localizacao-atual" class="span12">
+                  <option value="S" selected>Sim</option>
+                  <option value="N">Não</option>
+              </select>
+          </div>    
+        </div><!--/row-->
+        <hr>
+        <div class="row-fluid">
+          <div class="span12">
+              <label>Local</label>
+              <input name="endereco" type="text" class="span12" placeholder="Ex.: Av. Amazonas, 5678, Belo Horizonte">
+          </div>    
+        </div><!--/row-->
+        <hr>
+        <article>
+        </article>
+        <hr>
+        <div class="row-fluid">
+          <div class="span12">
+              <input type="button" class="btn btn-primary span12" value="Criar" onclick="doRequest();">
+          </div>    
+        </div><!--/row-->
+        </form>
       <hr>
 
       <footer>
@@ -104,6 +107,64 @@
     <script src="./js/jquery-1.10.1.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/main.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    
+    <script type="text/javascript">
+        var lat, lng;
+        function success(position) {
+            var mapcanvas = document.createElement('div');
+            mapcanvas.id = 'mapcanvas';
+            mapcanvas.style.height = '150px';
+            mapcanvas.style.width = '100%';
 
+            document.querySelector('article').appendChild(mapcanvas);
+
+            lat = position.coords.latitude;
+            lng = position.coords.longitude;
+
+            var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            var myOptions = {
+              zoom: 15,
+              center: latlng,
+              mapTypeControl: false,
+              navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
+
+            var marker = new google.maps.Marker({
+                position: latlng, 
+                map: map, 
+                title:"Você está aqui!"
+            });
+          }
+
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success);
+          } else {
+              alert('Geolocalização não suportada para este navegador.');
+          }
+          
+          function doRequest() {
+              var $form = $('#criarLocal2');
+              var data = getFormData($form);
+
+              if(data['localizacao-atual'] == 'N') {
+                  var geocoder = new google.maps.Geocoder();
+                  var closureLat, closureLng;
+                  geocoder.geocode( { 'address': data.endereco}, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                      data.latitude = results[0].geometry.location.ob;
+                      data.longitude = results[0].geometry.location.pb;
+                      Request.httpRequest('http://www.google.com', data);
+                    }
+                  });
+              } else if(data['localizacao-atual'] == 'S'){
+                  data.latitude = lat;
+                  data.longitude = lng;
+                  Request.httpRequest('http://www.google.com', data);
+              }
+          }
+    </script>
   </body>
 </html>

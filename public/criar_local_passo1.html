@@ -66,28 +66,27 @@
     </div>
 
     <div class="container-fluid">
+      <form name="criarLocal1" id="criarLocal1">
       <div class="row-fluid">
         <div class="span12">
             <label>Universo</label>
-            <select class="span12">
-                <option selected>CEFET-MG Campus II</option>
-                <option>Hospital Santa Casa</option>
-            </select>
+            <select id="universo" name="universo" class="span12"></select>
         </div>    
       </div><!--/row-->
       <hr>
       <div class="row-fluid">
         <div class="span12">
             <label>Nome do local</label>
-            <input type="text" class="span12">
+            <input name="nome" type="text" class="span12">
         </div>    
       </div><!--/row-->
       <hr>
       <div class="row-fluid">
         <div class="span12">
-            <input type="button" class="btn btn-primary span12" value="Próximo">
+            <input type="button" class="btn btn-primary span12" value="Próximo" onclick="Request.httpRequest('/criar-local-1', getFormData($('#criarLocal1')))">
         </div>    
       </div><!--/row-->
+      </form>
       <hr>
 
       <footer>
@@ -102,6 +101,19 @@
     <script src="./js/jquery-1.10.1.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/main.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var success = function(response) {
+                var option;
+                for(var idx in response) {
+                    option = $('<option value="'+response[idx].id+'">'+response[idx].nome+'</option>')
+                    $('select#universo').append(option);
+                }
+            };
+
+            Request.httpRequest('/listar-universos', {}, success);
+        });
+    </script>
 
   </body>
 </html>
