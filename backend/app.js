@@ -33,6 +33,7 @@ app.get('/', routes.index);
 app.get('/login', routes.login);
 app.post('/in/login', user.authenticate);
 app.get('/nova-conta', routes.novaConta);
+app.post('/in/nova-conta', user.insert);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
