@@ -66,36 +66,38 @@
     </div>
 
     <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span12">
-            <label>Código de confirmação</label>
-        </div>    
-      </div><!--/row-->
-      <div class="row-fluid">
-        <div class="span12">
-            <input type="text" class="span12" placeholder="código de confirmação">
-        </div>    
-      </div><!--/row-->
-      <hr>
-      <div class="row-fluid">
-        <div class="span12" style="text-align: justify">
-            O código de confirmação foi enviado para seu e-mail no ato de criação da conta. 
-            Caso não tenha recebido solicite o reenvio do mesmo. Certifique-se de que o e-mail 
-            não está na sua caixa de spams.
-        </div>    
-      </div><!--/row-->
-      <hr>
-      <div class="row-fluid">
-        <div class="span12">
-            <input type="button" class="btn btn-primary span12" value="Confirmar">
-        </div>    
-      </div><!--/row-->
-      <hr>
-      <div class="row-fluid">
-        <div class="span12">
-            <input type="button" class="btn btn-primary span12" value="Solicitar código">
-        </div>    
-      </div><!--/row-->
+      <form name="confimarConta" id="confirmarConta">
+        <div class="row-fluid">
+          <div class="span12">
+              <label>Código de confirmação</label>
+          </div>    
+        </div><!--/row-->
+        <div class="row-fluid">
+          <div class="span12">
+              <input type="text" name="codigo" class="span12" placeholder="código de confirmação">
+          </div>    
+        </div><!--/row-->
+        <hr>
+        <div class="row-fluid">
+          <div class="span12" style="text-align: justify">
+              O código de confirmação foi enviado para seu e-mail no ato de criação da conta. 
+              Caso não tenha recebido solicite o reenvio do mesmo. Certifique-se de que o e-mail 
+              não está na sua caixa de spams.
+          </div>    
+        </div><!--/row-->
+        <hr>
+        <div class="row-fluid">
+          <div class="span12">
+              <input type="button" class="btn btn-primary span12" value="Confirmar" onclick="Request.httpRequest('/confirmar-conta', getFormData($('confirmarConta')))">
+          </div>    
+        </div><!--/row-->
+        <hr>
+        <div class="row-fluid">
+          <div class="span12">
+              <input type="button" class="btn btn-primary span12" value="Solicitar código" onclick="Request.httpRequest('/solicitar-codigo', {})">
+          </div>    
+        </div><!--/row-->
+      </form>
       <hr>
 
       <footer>
@@ -109,6 +111,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="./js/jquery-1.10.1.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="./js/main.js"></script>
 
   </body>
 </html>

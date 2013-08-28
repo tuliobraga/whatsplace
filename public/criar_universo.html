@@ -66,28 +66,30 @@
     </div>
 
     <div class="container-fluid">
+      <form name="criarUniverso" id="criarUniverso">
       <div class="row-fluid">
         <div class="span12">
             <label>Nome do Universo</label>
-            <input type="text" class="span12">
+            <input name="nome" type="text" class="span12">
         </div>    
       </div><!--/row-->
       <hr>
       <div class="row-fluid">
         <div class="span12">
             <label>Tipo do universo</label>
-            <select class="span12">
-                <option selected>Privado</option>
-                <option>Público</option>
+            <select name="tipo" class="span12">
+                <option value="R" selected>Privado</option>
+                <option value="P">Público</option>
             </select>
         </div>    
       </div><!--/row-->
       <hr>
       <div class="row-fluid">
         <div class="span12">
-            <input type="button" class="btn btn-primary span12" value="Criar">
+            <input type="button" class="btn btn-primary span12" value="Criar" onclick="Request.httpRequest('criar-universo', getFormData($('#criarUniverso')))">
         </div>    
       </div><!--/row-->
+      </form>
       <hr>
 
       <footer>
@@ -101,6 +103,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="./js/jquery-1.10.1.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="./js/main.js"></script>
 
   </body>
 </html>

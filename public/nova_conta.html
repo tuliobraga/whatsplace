@@ -66,31 +66,33 @@
     </div>
 
     <div class="container-fluid">
+      <form name="novaConta" id="novaConta">
       <div class="row-fluid">
         <div class="span12">
-            <input type="text" class="span12" placeholder="nome">
+            <input type="text" name="nome" class="span12" placeholder="nome">
         </div>    
       </div><!--/row-->
       <div class="row-fluid">
         <div class="span12">
-            <input type="text" class="span12" placeholder="e-mail">
+            <input type="text" name="email" class="span12" placeholder="e-mail">
         </div>    
       </div><!--/row-->
       <div class="row-fluid">
         <div class="span12">
-            <input type="text" class="span12" placeholder="senha">
+            <input type="text" name="senha" class="span12" placeholder="senha">
         </div>    
       </div><!--/row-->
       <div class="row-fluid">
         <div class="span12">
-            <input type="text" class="span12" placeholder="confirmar senha">
+            <input type="text" name="confirmar-senha" class="span12" placeholder="confirmar senha">
         </div>    
       </div><!--/row-->
       <div class="row-fluid">
         <div class="span12">
-            <input type="button" class="btn btn-primary span12" value="Criar conta">
+            <input type="button" class="btn btn-primary span12" value="Criar conta" onclick="Request.httpRequest('/criar-conta', getFormData($('#novaConta')))">
         </div>    
       </div><!--/row-->
+      </form>
       <hr>
 
       <footer>
@@ -104,6 +106,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="./js/jquery-1.10.1.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="./js/main.js"></script>
 
   </body>
 </html>
