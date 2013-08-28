@@ -66,27 +66,29 @@
     </div>
 
     <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span12">
-            <input type="text" class="span12" placeholder="e-mail">
-        </div>    
-      </div><!--/row-->
-      <div class="row-fluid">
-        <div class="span12">
-            <input type="text" class="span12" placeholder="senha">
-        </div>    
-      </div><!--/row-->
-      <div class="row-fluid">
-        <div class="span12">
-            <input type="button" class="btn btn-primary span12" value="Entrar">
-        </div>    
-      </div><!--/row-->
-      <br />
-      <div class="row-fluid">
-        <div class="span12">
-            <input type="button" class="btn btn-primary span12" value="Criar nova conta">
-        </div>    
-      </div><!--/row-->
+      <form id="login" name="login">
+        <div class="row-fluid">
+          <div class="span12">
+              <input type="text" name="email" class="span12" placeholder="e-mail">
+          </div>    
+        </div><!--/row-->
+        <div class="row-fluid">
+          <div class="span12">
+              <input type="text" name="senha" class="span12" placeholder="senha">
+          </div>    
+        </div><!--/row-->
+        <div class="row-fluid">
+          <div class="span12">
+              <input type="button" class="btn btn-primary span12" value="Entrar" onclick="Request.httpRequest('/login', getFormData($('#login')))">
+          </div>    
+        </div><!--/row-->
+        <br />
+        <div class="row-fluid">
+          <div class="span12">
+              <a href="/nova-conta" class="btn btn-primary span12" >Criar nova conta</a>
+          </div>    
+        </div><!--/row-->
+      </form>
       <hr>
 
       <footer>
@@ -100,6 +102,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="./js/jquery-1.10.1.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="./js/main.js"></script>
 
   </body>
 </html>
