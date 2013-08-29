@@ -14,3 +14,11 @@ exports.login = function(req, res){
 exports.novaConta = function(req, res){
     res.render('nova_conta.html');
 };
+
+exports.confirmarConta = function(req, res) {
+    res.render('confirmar_conta.html');
+}
+
+exports.dashboard = function(req, res) {
+    res.render('dashboard.html');
+}

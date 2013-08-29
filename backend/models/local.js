@@ -1,4 +1,4 @@
-var Local = function(id, universo, nome, latitude, longitude, gerente) {
+exports.Local = function Local(id, universo, nome, latitude, longitude, gerente) {
     this._id = id;
     this._universo = universo;
     this._nome = nome;

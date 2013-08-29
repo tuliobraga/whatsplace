@@ -1,4 +1,4 @@
-var Universo = function(id, nome, privado, administrador) {
+exports.Universo = function Universo(id, nome, privado, administrador) {
 	this._id = id;
     this._nome = nome;
     this._privado = privado;

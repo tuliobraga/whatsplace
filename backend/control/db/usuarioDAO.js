@@ -1,26 +1,30 @@
+var usuarioClass = require('../../models/usuario');
+
 const GET = 'SELECT usuario.* FROM usuario ' +
     'WHERE usuario.id_usuario = ?';
 const GET_PASS = 'SELECT usuario.* FROM usuario ' +
     'WHERE usuario.email_usuario = ? AND usuario.senha_usuario = PASSWORD(?)';
 const GET_CODE = 'SELECT usuario.* FROM usuario ' +
-    'WHERE usuario.email_usuario = ? AND usuario.codigo_confirmacao_usuario = ?';
+    'WHERE usuario.codigo_confirmacao_usuario = ?';
 const INSERT = 'INSERT INTO usuario (nome_usuario, email_usuario, senha_usuario, codigo_confirmacao_usuario) ' +
     'VALUES (?, ?, PASSWORD(?), ?)';
 const UPDATE = 'UPDATE usuario SET nome_usuario = ?, email_usuario = ?, ' +
-    'codigo_confirmacao_usuario = ?, localAtual_usuario = ? ' +
+    'codigo_confirmacao_usuario = ? ' +
     'WHERE id_usuario = ?';
 const UPDATE_CONF_COD = 'UPDATE usuario SET codigo_confirmacao_usuario = ? ' +
     'WHERE email_usuario = ?';
 
-exports.extrairUsuario = function extrairUsuario(obj) {
-    return new Usuario(
+function extrairUsuario(obj) {
+    return new usuarioClass.Usuario(
         obj.id_usuario,
+        obj.email_usuario,
         obj.nome_usuario,
         obj.senha_usuario,
         obj.avatar_usuario,
-        obj.codigoConfirmacao_usuario,
+        obj.codigo_confirmacao_usuario,
         obj.localAtual_usuario);
 }
+exports.extrairUsuario = extrairUsuario;
 
 exports.get = function getUser(con, id, callback) {
     con.query(GET, [id],
@@ -37,7 +41,7 @@ exports.get = function getUser(con, id, callback) {
 }
 
 exports.getWithPass = function getUser(con, email, password, callback) {
-    con.query(GET_PASS, [email, password],
+    var query = con.query(GET_PASS, [email, password],
         function resultadoGetPass(err, result) {
             var usuario = null;
             if (!err) {
@@ -48,16 +52,17 @@ exports.getWithPass = function getUser(con, email, password, callback) {
             callback(usuario);
         }
     );
+    console.log(query.sql);
 }
 
-exports.confirmEmail = function confirmEmailUser(con, email, code, callback) {
-    con.query(GET_CODE, [email, code],
+exports.confirmEmail = function confirmEmailUser(con, code, callback) {
+    var query = con.query(GET_CODE, [code],
         function resultadoGetCode(err, result) {
             if (!err) {
                 if (result.length > 0) {
                     var usuario = extrairUsuario(result[0]);
                     usuario.setCodigoConfirmacao(null);
-                    this.update(con, usuario, function(u) {
+                    updateUser(con, usuario, function(u) {
                         callback(u);
                     });
                 }
@@ -66,10 +71,12 @@ exports.confirmEmail = function confirmEmailUser(con, email, code, callback) {
                 }
             }
             else {
+                console.log(err);
                 callback(null);
             }
         }
     );
+    console.log(query.sql);
 }
 
 exports.insert = function insertUser(con, usuario, callback) {
@@ -86,11 +93,10 @@ exports.insert = function insertUser(con, usuario, callback) {
     );
 }
 
-exports.update = function updateUser(con, usuario, callback) {
+function updateUser(con, usuario, callback) {
     // tenta alterar usuário
-    con.query(UPDATE, [usuario.getNome(), usuario.getEmail(), usuario.getCodigoConfirmacao(),
-                       usuario.getLocalAtual(), usuario.getId()],
-        function resultadoUpdate(err, result) {
+    var query = con.query(UPDATE, [usuario.getNome(), usuario.getEmail(), usuario.getCodigoConfirmacao(), usuario.getId()],
+        function resultadoUpdate(err) {
             if (!err) {
                 callback(usuario);
             }
@@ -99,7 +105,9 @@ exports.update = function updateUser(con, usuario, callback) {
             }
         }
     );
+    console.log(query.sql);
 }
+exports.update = updateUser;
 
 exports.updateConfirmationCode = function updateConfirmationCodeUser(con, email, code, callback) {
     // tenta alterar usuário

@@ -42,9 +42,9 @@ Request.httpRequest = function(service, jsonData, successCallback, errorCallback
 };
 
 Request.defaultSuccessHandler = function(response) {
-	if(response.message) alert(response.message);
+    alert(response.responseText);
 }
 
 Request.defaultErrorHandler = function(response) {
-	if(response.message) alert(response.message);
+	alert(response.responseText);
 }

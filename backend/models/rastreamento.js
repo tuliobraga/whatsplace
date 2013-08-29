@@ -1,4 +1,4 @@
-var Rastreamento = function(id, entrada, saida, local, usuario) {
+exports.Rastreamento = function Rastreamento(id, entrada, saida, local, usuario) {
     this._id = id;
     this._entrada = entrada;
     this._saida = saida;
