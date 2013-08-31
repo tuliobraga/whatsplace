@@ -1,4 +1,4 @@
 whatsplace
 ==========
 
-A instant messenger based on location.
+A instant messenger based in location.

@@ -41,6 +41,7 @@ app.post('/in/criar-conta', user.insert);
 app.get('/confirmar-conta', routes.confirmarConta);
 app.post('/in/confirmar-conta', user.confirmEmail);
 app.post('/dashboard', routes.dashboard);
+app.post('/in/nova-conta', user.insert);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
