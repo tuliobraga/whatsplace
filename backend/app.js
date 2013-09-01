@@ -6,6 +6,7 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
+  , universo = require('./routes/universe')
   , http = require('http')
   , path = require('path');
 
@@ -34,6 +35,8 @@ app.get('/login', routes.login);
 app.post('/in/login', user.authenticate);
 app.get('/nova-conta', routes.novaConta);
 app.post('/in/nova-conta', user.insert);
+app.get('/criar-universo', routes.criarUniverso);
+app.post('/in/criar-universo', universo.insert);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
