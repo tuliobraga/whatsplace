@@ -1,4 +1,4 @@
-exports.Mensagem = function Mensagem(id, texto, remetente, destinatario, horario) {
+exports.Mensagem = function(id, texto, remetente, destinatario, horario) {
     this._id = id;
     this._texto = texto;
     this._remetente = remetente;

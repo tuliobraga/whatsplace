@@ -1,17 +1,11 @@
-exports.Local = function Local(id, universo, nome, latitude, longitude, gerente) {
+exports.Local = function(id, nome, latitude, longitude) {
     this._id = id;
-    this._universo = universo;
     this._nome = nome;
     this._latitude = latitude;
     this._longitude = longitude;
-    this._gerente = gerente;
 	
 	this.getId = function() {
 		return this._id;
-	}
-	
-	this.getUniverso = function() {
-		return this._universo;
 	}
 	
 	this.getNome = function() {
@@ -26,16 +20,8 @@ exports.Local = function Local(id, universo, nome, latitude, longitude, gerente)
 		return this._longitude;
 	}
 	
-	this.getGerente = function() {
-		return this._gerente;
-	}
-	
 	this.setId = function(novoId) {
         this._id = novoId;
-	}
-	
-	this.setUniverso = function(novoUniverso) {
-        this._universo = novoUniverso;
 	}
 	
 	this.setNome = function(novoNome) {
@@ -48,10 +34,6 @@ exports.Local = function Local(id, universo, nome, latitude, longitude, gerente)
 	
 	this.setLongitude = function(novoLongitude) {
         this._longitude = novoLongitude;
-	}
-	
-	this.setGerente = function(novoGerente) {
-        this._gerente = novoGerente;
 	}
 	
 }
