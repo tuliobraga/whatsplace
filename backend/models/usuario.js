@@ -1,11 +1,11 @@
-
-exports.Usuario = function(id, email, nome, senha, avatar, codigoConfirmacao, localAtual) {
+exports.Usuario = function(id, email, nome, senha, avatar, codigoConfirmacao, universoAtual, localAtual) {
     this._id = id;
     this._email = email;
     this._nome = nome;
     this._senha = senha;
     this._avatar = avatar;
     this._codigoConfirmacao = codigoConfirmacao;
+    this._universoAtual = universoAtual;
     this._localAtual = localAtual;
 
     this.getId = function() {
@@ -32,6 +32,10 @@ exports.Usuario = function(id, email, nome, senha, avatar, codigoConfirmacao, lo
         return this._codigoConfirmacao;
     }
 
+    this.getUniversoAtual = function() {
+        return this._universoAtual;
+    }
+
     this.getLocalAtual = function() {
         return this._localAtual;
     }
@@ -41,11 +45,11 @@ exports.Usuario = function(id, email, nome, senha, avatar, codigoConfirmacao, lo
     }
 
     this.setEmail = function(novoEmail) {
-        this._texto = novoEmail;
+        this._email = novoEmail;
     }
 
     this.setNome = function(novoNome) {
-        this._universo = novoNome;
+        this._nome = novoNome;
     }
 
     this.setSenha = function(novaSenha) {
@@ -53,18 +57,22 @@ exports.Usuario = function(id, email, nome, senha, avatar, codigoConfirmacao, lo
     }
 
     this.setAvatar = function(novoAvatar) {
-        this._convidado = novoAvatar;
+        this._avatar = novoAvatar;
     }
 
     this.setCodigoConfirmacao = function(novoCodigoConfirmacao) {
         this._codigoConfirmacao = novoCodigoConfirmacao;
     }
 
-    this.setLocalAtual = function(novoLocalAtual) {
-        this._pendente = novoLocalAtual;
+    this.setUniversoAtual = function(novoUniversoAtual) {
+        this._universoAtual = novoUniversoAtual;
     }
 
-    this.toJSON = function() {
+    this.setLocalAtual = function(novoLocalAtual) {
+        this._localAtual = novoLocalAtual;
+    }
+
+    this.toJSON() = function() {
         var u = {
             id: this.getId(),
             nome: this.getNome(),
@@ -72,6 +80,7 @@ exports.Usuario = function(id, email, nome, senha, avatar, codigoConfirmacao, lo
             senha: this.getSenha(),
             avatar: this.getAvatar(),
             codigoConfirmacao: this.getCodigoConfirmacao(),
+            universoAtual: this.getUniversoAtual(),
             localAtual: this.getLocalAtual()
         };
         return u;

@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
   <head>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
     <title>Bootstrap, from Twitter</title>
@@ -52,7 +53,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Locais</a>
+          <a class="brand" href="#">Solicitacoes de universo</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
@@ -66,27 +67,51 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span12">
-            <input type="text" class="span12 search-query" placeholder="Buscar...">
-        </div>    
-      </div><!--/row-->
-      <br />
-      <div class="row-fluid">
-        <table class="datatable table table-hover table-bordered" style="background-color: #E1E1E1;">
+        <table class="table table-hover table-bordered" style="background-color: #E1E1E1;">
           <thead>
             <tr style="background-color: #eee">
-              <th>Locais</th>
+              <th colspan="3">Solicitações de universo</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>DGO</td>
+              <td>CEFET-MG Campus I</td>
+              <td>
+                  <div class="span12">
+                    <input type="button" class="btn btn-success span12" value="V">
+                  </div>
+              </td>
+              <td>
+                  <div class="span12">
+                    <input type="button" class="btn btn-danger span12" value="X">
+                  </div>
+              </td>
             </tr>
             <tr>
-              <td>DECOM</td>
+              <td>FIAT Betim</td>
+              <td>
+                  <div class="span12">
+                    <input type="button" class="btn btn-success span12" value="V">
+                  </div>
+              </td>
+              <td>
+                  <div class="span12">
+                    <input type="button" class="btn btn-danger span12" value="X">
+                  </div>
+              </td>
             </tr>
             <tr>
-              <td>Biblioteca</td>
+              <td>Hospital Santa Casa</td>
+              <td>
+                  <div class="span12">
+                    <input type="button" class="btn btn-success span12" value="V">
+                  </div>
+              </td>
+              <td>
+                  <div class="span12">
+                    <input type="button" class="btn btn-danger span12" value="X">
+                  </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -105,16 +130,6 @@
     <script src="./js/jquery-1.10.1.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/main.js"></script>
-    <script type="text/javascript">
-        function populateTable(response) {
-            response.text
-            $('.datatable').
-        }
-
-        function search() {
-            
-        }
-    </script>
 
   </body>
 </html>

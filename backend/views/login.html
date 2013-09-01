@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,7 +53,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Locais</a>
+          <a class="brand" href="#">Login</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
@@ -65,32 +66,29 @@
     </div>
 
     <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span12">
-            <input type="text" class="span12 search-query" placeholder="Buscar...">
-        </div>    
-      </div><!--/row-->
-      <br />
-      <div class="row-fluid">
-        <table class="datatable table table-hover table-bordered" style="background-color: #E1E1E1;">
-          <thead>
-            <tr style="background-color: #eee">
-              <th>Locais</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>DGO</td>
-            </tr>
-            <tr>
-              <td>DECOM</td>
-            </tr>
-            <tr>
-              <td>Biblioteca</td>
-            </tr>
-          </tbody>
-        </table>
-      </div><!--/row-->
+      <form id="login" name="login">
+        <div class="row-fluid">
+          <div class="span12">
+              <input type="text" name="email" class="span12" placeholder="e-mail">
+          </div>    
+        </div><!--/row-->
+        <div class="row-fluid">
+          <div class="span12">
+              <input type="text" name="senha" class="span12" placeholder="senha">
+          </div>    
+        </div><!--/row-->
+        <div class="row-fluid">
+          <div class="span12">
+              <input type="button" class="btn btn-primary span12" value="Entrar" onclick="Request.httpRequest('/in/login', getFormData($('#login')))">
+          </div>    
+        </div><!--/row-->
+        <br />
+        <div class="row-fluid">
+          <div class="span12">
+              <a href="/nova-conta" class="btn btn-primary span12" >Criar nova conta</a>
+          </div>    
+        </div><!--/row-->
+      </form>
       <hr>
 
       <footer>
@@ -105,16 +103,6 @@
     <script src="./js/jquery-1.10.1.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/main.js"></script>
-    <script type="text/javascript">
-        function populateTable(response) {
-            response.text
-            $('.datatable').
-        }
-
-        function search() {
-            
-        }
-    </script>
 
   </body>
 </html>

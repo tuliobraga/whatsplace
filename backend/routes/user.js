@@ -1,22 +1,21 @@
-var nodemailer   = require('nodemailer');
-var mysql        = require('../control/db/connection');
-var usuarioDAO   = require('../control/db/usuarioDAO');
-var usuarioClass = require('../models/usuario');
+var nodemailer = require('nodemailer');
+var mysql = require('../control/db/connection');
+var usuarioDAO = require('../control/db/usuarioDAO');
 
 exports.authenticate = function(req, res) {
     var email = req.body.email;
     var senha = req.body.senha;
-res.send(500, 'E-mail ou senha inválidos');
+
     // connect to database
     var con = mysql.getConnection();
     usuarioDAO.getWithPass(con, email, senha, function(u) {
         if (u) {
+            req.session.usuario = u;
             if (u.getCodigoConfirmacao()) {
-                res.send(500, 'Você ainda não confirmou seu e-mail');
+                res.redirect('/confirmar-conta');
             }
             else {
-                req.session.usuario = u;
-                res.send(200, 'Logado com sucesso');
+                res.send(200, u.toJSON());
             }
         }
         else {
@@ -28,12 +27,12 @@ res.send(500, 'E-mail ou senha inválidos');
 }
 
 exports.confirmEmail = function(req, res) {
+    var usuario = req.session.usuario;
     var codigo = req.body.codigo;
-    codigo = '-1792633853';
 
     // connect to database
     var con = mysql.getConnection();
-    usuarioDAO.confirmEmail(con, codigo, function(u) {
+    usuarioDAO.confirmEmail(con, usuario, codigo, function(u) {
         if (u) {
             req.session.usuario = u;
             res.send(200, u.toJSON());
@@ -60,23 +59,21 @@ function hashCode(s){
 function sendConfirmationCode(email, code, callback) {
     // send mail
     var transport = nodemailer.createTransport("SMTP", {
-        host: "mail.tbrtec.com", // hostname
-        secureConnection: false, // use SSL
-        port: 26, // port for secure SMTP
+        service: "Gmail",
         auth: {
-            user: "frederico.pantuzza@tbrtec.com",
-            pass: "thf5123"
+            user: "fred.pantuzza@gmail.com",
+            pass: "thf5123peruas6927"
         }
     });
     transport.sendMail({
-        from: "frederico.pantuzza@tbrtec.com",
+        from: "fred.pantuzza@gmail.com",
         to: email,
         subject: "WhatsPlace - Confirmação de e-mail",
         generateTextFromHTML: true,
         html: "Bem vindo ao WhatsPlace<br />" +
             "Insira esse código de confirmação no seu aplicativo: " + code
     }, function(err, responseStatus) {
-        if (!err) {
+        if (!error) {
             console.log(responseStatus.message); // response from the server
             console.log(responseStatus.messageId); // Message-ID value used
         }
@@ -91,45 +88,62 @@ exports.insert = function insertUser(req, res) {
     var nome = req.body.nome;
     var email = req.body.email;
     var senha = req.body.senha;
-    var senha2 = req.body.confirmarSenha;
-    if (senha !== senha2) {
-        res.send(500, 'Senhas informadas são diferentes');
-    }
-    else {
-        var codigoConfirmacao = hashCode(new Date().toDateString());
-        var usuario = new usuarioClass.Usuario(null, email, nome, senha, null, codigoConfirmacao, null);
+    var codigoConfirmacao = hashCode(new Date().toDateString());
+    var usuario = new Usuario(null, nome, email, senha, null, codigoConfirmacao, null);
 
-        // connect to database
-        var con = mysql.getConnection();
-        usuarioDAO.insert(con, usuario, function(id) {
-            if (id) {
-                usuario.setId(id);
-                sendConfirmationCode(usuario.getEmail(), usuario.getCodigoConfirmacao(), function(err) {
-                    if (!err) {
-                        res.send(200, 'Logado com sucesso');
-                    }
-                    else {
-                        res.send(500, 'Erro enviando código de confirmação por e-mail');
-                        console.log(err);
-                    }
-                });
-            }
-            else {
-                res.send(500);
-            }
-        });
-    }
+    // connect to database
+    var con = mysql.getConnection();
+    usuarioDAO.insert(con, usuario, function(id) {
+        if (id) {
+            usuario.setId(id);
+            sendConfirmationCode(usuario.getEmail(), usuario.getCodigoConfirmacao(), function(err) {
+                if (!err) {
+                    res.send(200);
+                }
+                else {
+                    res.send(500);
+                }
+            });
+        }
+        else {
+            res.send(500);
+        }
+    });
 }
 
 exports.resendConfirmationCode = function resendConfirmationCodeUser(req, res) {
-    var email = req.body.email;
+    var usuario = req.session.usuario;
     var codigoConfirmacao = hashCode(new Date().toDateString());
 
     // connect to database
     var con = mysql.getConnection();
-    usuarioDAO.updateConfirmationCode(con, email, codigoConfirmacao, function(err) {
-        if (!err) {
+    usuarioDAO.updateConfirmationCode(con, usuario, codigoConfirmacao, function(u) {
+        if (u) {
+            req.session.usuario = u;
             res.send(200);
+        }
+        else {
+            res.send(500);
+        }
+    });
+}
+
+exports.changeLocal = function(req, res) {
+    var usuario = req.session.usuario;
+    var idLocal = req.body.idLocal;
+    // connect to database
+    var con = mysql.getConnection();
+    usuarioDAO.updateLocal(con, usuario, idLocal, function(u) {
+        if (u) {
+            usuarioDAO.get(con, usuario.getId(), function(u) {
+                if (u) {
+                    req.session.usuario = u;
+                    res.send(200);
+                }
+                else {
+                    res.send(500);
+                }
+            })
         }
         else {
             res.send(500);

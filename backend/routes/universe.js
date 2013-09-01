@@ -19,11 +19,40 @@ exports.insert = function insertUniverse(req, res) {
     });
 }
 
-exports.removeUser = function removeUserUniverse(req, res) {
+exports.listUsers = function listUserUniverses(req, res) {
+    var usuario = req.session.usuario;
+    // connect to database
+    var con = mysql.getConnection();
+    universoDAO.listUsers(con, usuario, function(universes) {
+        if (universes) {
+            res.send(200, universes);
+        }
+        else {
+            res.send(500);
+        }
+    })
+}
+
+exports.listLocals = function listUniverseLocals(req, res) {
     var idUniverso = req.body.idUniverso;
     // connect to database
     var con = mysql.getConnection();
-    universoDAO.removeUser(con, idUniverso, req.session.usuario, function(err) {
+    universoDAO.listLocals(con, idUniverso, function(locals) {
+        if (locals) {
+            res.send(200, locals);
+        }
+        else {
+            res.send(500);
+        }
+    })
+}
+
+exports.removeUser = function removeUserUniverse(req, res) {
+    var idUniverso = req.body.idUniverso;
+    var usuario = req.session.usuario;
+    // connect to database
+    var con = mysql.getConnection();
+    universoDAO.removeUser(con, idUniverso, usuario, function(err) {
         if (!err) {
             res.send(200);
         }

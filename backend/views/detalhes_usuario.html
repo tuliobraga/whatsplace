@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
   <head>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
     <title>Bootstrap, from Twitter</title>
@@ -52,7 +53,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Locais</a>
+          <a class="brand" href="#">Detalhes do Usuário</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
@@ -65,38 +66,33 @@
     </div>
 
     <div class="container-fluid">
+        <div class="row">
+          <div class="span4 col-lg-3">
+            <a href="#" class="thumbnail">
+                <img style="width: 200px; height: 200px;" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/c27.27.337.337/s160x160/155913_508141782549727_736746138_n.jpg" alt="">
+            </a>
+          </div>
+        </div>
+      <hr>
+        <b>Frederico Pantuzza</b>
+        <br />
+        Aluno de Engenharia de Computação similar a um Pikachu. Estagiário de manutenção de periféricos na Terrabrasilis.
+        <hr>
+        21 anos
+        <br>
+        Belo Horizonte, Brasil
+      <hr>
       <div class="row-fluid">
         <div class="span12">
-            <input type="text" class="span12 search-query" placeholder="Buscar...">
+            <input type="button" class="btn btn-primary span12" value="Convidar para universo">
+            <hr />
+            Universo ativo: CEFET-MG Campus II
         </div>    
       </div><!--/row-->
-      <br />
-      <div class="row-fluid">
-        <table class="datatable table table-hover table-bordered" style="background-color: #E1E1E1;">
-          <thead>
-            <tr style="background-color: #eee">
-              <th>Locais</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>DGO</td>
-            </tr>
-            <tr>
-              <td>DECOM</td>
-            </tr>
-            <tr>
-              <td>Biblioteca</td>
-            </tr>
-          </tbody>
-        </table>
-      </div><!--/row-->
       <hr>
-
       <footer>
         <p>&copy; Whatsplace 2013</p>
       </footer>
-
     </div><!--/.fluid-container-->
 
     <!-- Le javascript
@@ -105,16 +101,6 @@
     <script src="./js/jquery-1.10.1.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/main.js"></script>
-    <script type="text/javascript">
-        function populateTable(response) {
-            response.text
-            $('.datatable').
-        }
-
-        function search() {
-            
-        }
-    </script>
 
   </body>
 </html>
