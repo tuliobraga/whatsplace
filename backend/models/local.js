@@ -35,5 +35,15 @@ exports.Local = function(id, nome, latitude, longitude) {
 	this.setLongitude = function(novoLongitude) {
         this._longitude = novoLongitude;
 	}
+
+    this.toJSON = function() {
+        var l = {
+            id: this.getId(),
+            nome: this.getNome(),
+            latitude: this.getLatitude(),
+            longitude: this.getLongitude()
+        }
+        return l;
+    }
 	
 }

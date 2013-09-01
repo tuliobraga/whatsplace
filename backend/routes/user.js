@@ -2,6 +2,20 @@ var nodemailer = require('nodemailer');
 var mysql = require('../control/db/connection');
 var usuarioDAO = require('../control/db/usuarioDAO');
 
+exports.get = function(req, res) {
+    var idUsuario = req.body.idUsuario;
+    // connect to database
+    var con = mysql.getConnection();
+    usuarioDAO.get(con, idUsuario, function(usuario) {
+        if (usuario) {
+            res.send(200, usuario.toJSON());
+        }
+        else {
+            res.send(500);
+        }
+    })
+}
+
 exports.authenticate = function(req, res) {
     var email = req.body.email;
     var senha = req.body.senha;
@@ -151,6 +165,18 @@ exports.changeLocal = function(req, res) {
     });
 }
 
-exports.list = function(req, res){
-  res.send("respond with a resource");
+exports.sendMessage = function(req, res){
+    var usuario = req.session.usuario;
+    var idUsuarioDestinatario = req.body.destinatario;
+    var texto = req.body.texto;
+    // connect to database
+    var con = mysql.getConnection();
+    usuarioDAO.sendMessage(con, texto, idUsuarioDestinatario, usuario.getId(), function(err) {
+        if (!err) {
+            res.send(200);
+        }
+        else {
+            res.send(500);
+        }
+    });
 };

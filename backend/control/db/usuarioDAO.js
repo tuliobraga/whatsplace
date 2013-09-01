@@ -26,6 +26,8 @@ const UPDATE_CONF_COD = 'UPDATE usuario SET codigo_confirmacao_usuario = ? ' +
     'WHERE email_usuario = ?';
 const UPDATE_LOCAL = 'UPDATE rastreamento SET data_saida = CURRENT_TIMESTAMP() WHERE id_usuario = ? AND data_saida IS NULL; ' +
     'INSERT INTO rastreamento (id_usuario, id_local, data_entrada) VALUES (?, ?, CURRENT_TIMESTAMP())';
+const INSERT_MESSAGE = 'INSERT INTO mensagem (texto_mensagem, horario_mensagem, destinatario_mensagem, remetente_mensagem) ' +
+    'VALUES (?, ?, ?, ?)';
 
 var usuarioClass = require('../../models/usuario');
 var universoDAO = require('./universoDAO');
@@ -154,5 +156,11 @@ exports.updateLocal = function updateLocalUser(con, user, idLocal, callback) {
         else {
             callback(null);
         }
+    });
+}
+
+exports.sendMessage = function sendMessageUser(con, texto, destinatario, remetente, callback) {
+    con.query(INSERT_MESSAGE, [texto, new Date(), destinatario, remetente], function(err, result) {
+        callback(err);
     });
 }

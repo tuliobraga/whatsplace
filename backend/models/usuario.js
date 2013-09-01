@@ -80,8 +80,8 @@ exports.Usuario = function(id, email, nome, senha, avatar, codigoConfirmacao, un
             senha: this.getSenha(),
             avatar: this.getAvatar(),
             codigoConfirmacao: this.getCodigoConfirmacao(),
-            universoAtual: this.getUniversoAtual(),
-            localAtual: this.getLocalAtual()
+            universoAtual: this.getUniversoAtual().toJSON(),
+            localAtual: this.getLocalAtual().toJSON()
         };
         return u;
     }
