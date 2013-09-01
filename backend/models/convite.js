@@ -1,4 +1,4 @@
-var Convite = function(universo, convidado, texto, pendente) {
+exports.Convite = function Convite(universo, convidado, texto, pendente) {
     this._universo = universo;
     this._convidado = convidado;
     this._texto = texto;

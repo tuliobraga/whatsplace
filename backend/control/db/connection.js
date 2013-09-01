@@ -3,7 +3,8 @@ exports.getConnection = function() {
     var connection = mysql.createConnection({
         host:     "localhost",
         user:     "root",
-        password: "admintbrtec"
+        password: "123456",
+        database: "whatsplace"
     });
     connection.connect();
     return connection;

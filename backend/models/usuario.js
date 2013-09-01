@@ -1,4 +1,5 @@
-var Usuario = function(id, email, nome, senha, avatar, codigoConfirmacao, localAtual) {
+
+exports.Usuario = function(id, email, nome, senha, avatar, codigoConfirmacao, localAtual) {
     this._id = id;
     this._email = email;
     this._nome = nome;
@@ -63,8 +64,7 @@ var Usuario = function(id, email, nome, senha, avatar, codigoConfirmacao, localA
         this._pendente = novoLocalAtual;
     }
 
-
-    this.toJSON() = function() {
+    this.toJSON = function() {
         var u = {
             id: this.getId(),
             nome: this.getNome(),

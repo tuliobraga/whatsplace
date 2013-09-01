@@ -18,3 +18,11 @@ exports.novaConta = function(req, res){
 exports.criarUniverso = function(req, res){
     res.render('criar_universo.html');
 };
+
+exports.confirmarConta = function(req, res) {
+    res.render('confirmar_conta.html');
+}
+
+exports.dashboard = function(req, res) {
+    res.render('dashboard.html');
+}

@@ -53,7 +53,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Login</a>
+          <a class="brand" href="#">Criar local: passo 1</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
@@ -66,28 +66,26 @@
     </div>
 
     <div class="container-fluid">
-      <form id="login" name="login">
-        <div class="row-fluid">
-          <div class="span12">
-              <input type="text" name="email" class="span12" placeholder="e-mail">
-          </div>    
-        </div><!--/row-->
-        <div class="row-fluid">
-          <div class="span12">
-              <input type="text" name="senha" class="span12" placeholder="senha">
-          </div>    
-        </div><!--/row-->
-        <div class="row-fluid">
-          <div class="span12">
-              <input type="button" class="btn btn-primary span12" value="Entrar" onclick="Request.httpRequest('/in/login', getFormData($('#login')))">
-          </div>    
-        </div><!--/row-->
-        <br />
-        <div class="row-fluid">
-          <div class="span12">
-              <a href="/nova-conta" class="btn btn-primary span12" >Criar nova conta</a>
-          </div>    
-        </div><!--/row-->
+      <form name="criarLocal1" id="criarLocal1">
+      <div class="row-fluid">
+        <div class="span12">
+            <label>Universo</label>
+            <select id="universo" name="universo" class="span12"></select>
+        </div>    
+      </div><!--/row-->
+      <hr>
+      <div class="row-fluid">
+        <div class="span12">
+            <label>Nome do local</label>
+            <input name="nome" type="text" class="span12">
+        </div>    
+      </div><!--/row-->
+      <hr>
+      <div class="row-fluid">
+        <div class="span12">
+            <input type="button" class="btn btn-primary span12" value="Próximo" onclick="Request.httpRequest('/criar-local-1', getFormData($('#criarLocal1')))">
+        </div>    
+      </div><!--/row-->
       </form>
       <hr>
 
@@ -103,6 +101,19 @@
     <script src="./js/jquery-1.10.1.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/main.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var success = function(response) {
+                var option;
+                for(var idx in response) {
+                    option = $('<option value="'+response[idx].id+'">'+response[idx].nome+'</option>')
+                    $('select#universo').append(option);
+                }
+            };
+
+            Request.httpRequest('/listar-universos', {}, success);
+        });
+    </script>
 
   </body>
 </html>
