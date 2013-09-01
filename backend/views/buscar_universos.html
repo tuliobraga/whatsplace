@@ -68,33 +68,19 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span12">
-            <input type="text" class="span12 search-query" placeholder="Buscar...">
+            <input type="text" class="search-input span12 search-query" placeholder="Buscar...">
         </div>    
       </div><!--/row-->
       <br />
       <div class="row-fluid">
-        <table class="table table-hover table-bordered" style="background-color: #E1E1E1;">
+        <table class="datatable table table-hover table-bordered" style="background-color: #E1E1E1;">
           <thead>
             <tr style="background-color: #eee">
               <th>Universos</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>CEFET-MG Campus I</td>
-            </tr>
-            <tr>
-              <td>Parque Municipal</td>
-            </tr>
-            <tr>
-              <td>BH Shopping</td>
-            </tr>
-            <tr>
-              <td>FIAT Betim - &reg;</td>
-            </tr>
-            <tr>
-              <td>Hospital Santa Casa - &reg;</td>
-            </tr>
+
           </tbody>
         </table>
       </div><!--/row-->
@@ -112,6 +98,25 @@
     <script src="./js/jquery-1.10.1.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/main.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('input.search-input').keypress(function(e) {
+                if(e.which == 13) {
+                    search();
+                }
+            });
+        });
+        
+        function populateTable(response) {
+            for(var idx in response) {
+                var row = $('<tr><td>'+response[idx]['nome']+'</td></tr>');
+                $('.datatable table tbody').append(row);
+            }
+        }
 
+        function search() {
+            Request.httpRequest('/listar-universos', {}, populateTable);
+        }
+    </script>
   </body>
 </html>

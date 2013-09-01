@@ -27,8 +27,7 @@ exports.insert = function insertUniverse(req, res) {
         if (id) {
             universo.setId(id);
             res.send(200);
-        }
-        else {
+        } else {
             res.send(500);
         }
     });

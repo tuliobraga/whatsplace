@@ -29,6 +29,10 @@ exports.novaConta = function(req, res){
     res.render('nova_conta.html');
 };
 
+exports.criarUniverso = function(req, res){
+    res.render('criar_universo.html');
+};
+
 exports.confirmarConta = function(req, res) {
     if (req.session.usuario === null) {
         res.redirect('/login');
