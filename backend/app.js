@@ -23,7 +23,7 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser());
 app.use(express.session({
-    secret: 'whatsplace tulio gay'
+    secret: 'whatsplace'
 }));
 app.use(app.router);
 app.use(require('stylus').middleware(__dirname + '/public'));
@@ -34,14 +34,24 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.post('/', routes.dashboard);
-app.post('/login', routes.login);
-app.post('/nova-conta', routes.novaConta);
-app.post('/confirmar-conta', routes.confirmarConta);
-app.post('/dashboard', routes.dashboard);
-app.post('/novo-universo', routes.novoUniverso);
-app.post('/solicitacoes-universo', routes.exibirConvites);
-app.post('/criar-universo', routes.criarUniverso);
+app.get('/', routes.dashboard);
+app.get('/login', routes.login);
+app.get('/nova-conta', routes.novaConta);
+app.get('/confirmar-conta', routes.confirmarConta);
+app.get('/dashboard', routes.dashboard);
+app.get('/novo-universo', routes.novoUniverso);
+app.get('/solicitacoes-universo', routes.exibirConvites);
+app.get('/criar-universo', routes.criarUniverso);
+app.get('/criar-local-passo1', routes.criarLocal1);
+app.get('/criar-local-passo2', routes.criarLocal2);
+app.get('/buscar-universo', routes.buscarUniversos);
+app.get('/buscar-local', routes.buscarLocais);
+app.get('/buscar-usuario', routes.buscarUsuarios);
+app.get('/mensagem', routes.mensagem);
+app.get('/detalhes-local', routes.detalhesLocal);
+app.get('/detalhes-universo', routes.detalhesUniverso);
+app.get('/detalhes-usuario', routes.detalhesUsuario);
+app.get('/usuarios-local', routes.usuariosLocal);
 app.post('/in/detalhes-usuario', user.get);
 app.post('/in/login', user.authenticate);
 app.post('/in/nova-conta', user.insert);
