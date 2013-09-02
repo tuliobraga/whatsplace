@@ -111,6 +111,7 @@
         });
         
         function populateTable(response) {
+            $('.datatable table tbody').empty();
             for(var idx in response) {
                 var row = $('<tr><td>'+response[idx]['nome']+'</td></tr>');
                 $('.datatable table tbody').append(row);
