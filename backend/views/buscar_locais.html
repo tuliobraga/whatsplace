@@ -118,7 +118,8 @@
         }
 
         function search() {
-            Request.httpRequest('/listar-locais', {}, populateTable);
+            var local = $('input.search-input').val();
+            Request.httpRequest('/listar-locais', {nome: local}, populateTable);
         }
     </script>
   </body>

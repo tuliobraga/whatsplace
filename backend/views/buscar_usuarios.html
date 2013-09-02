@@ -118,7 +118,8 @@
         }
 
         function search() {
-            Request.httpRequest('/listar-usuarios', {}, populateTable);
+            var usuario = $('input.search-input').val();
+            Request.httpRequest('/listar-usuarios', {nome: usuario}, populateTable);
         }
     </script>
   </body>

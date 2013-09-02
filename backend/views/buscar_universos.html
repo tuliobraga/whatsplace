@@ -118,7 +118,8 @@
         }
 
         function search() {
-            Request.httpRequest('/listar-universos', {}, populateTable);
+            var universo = $('input.search-input').val();
+            Request.httpRequest('/listar-universos', {nome: universo}, populateTable);
         }
     </script>
   </body>
