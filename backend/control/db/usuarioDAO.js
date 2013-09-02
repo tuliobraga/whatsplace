@@ -33,14 +33,15 @@ var usuarioClass = require('../../models/usuario');
 var universoDAO = require('./universoDAO');
 
 function extrairUsuarioCompleto(obj) {
-    var universo = universoDAO.extrairUniverso(result[0]);
-    var local = universoDAO.extrairLocal(result[0]);
+    var universo = universoDAO.extrairUniverso(obj);
+    var local = universoDAO.extrairLocal(obj);
     return new usuarioClass.Usuario(
         obj.id_usuario,
+        obj.email_usuario,
         obj.nome_usuario,
         obj.senha_usuario,
         obj.avatar_usuario,
-        obj.codigoConfirmacao_usuario,
+        obj.codigo_confirmacao_usuario,
         universo,
         local);
 }
@@ -48,10 +49,11 @@ function extrairUsuarioCompleto(obj) {
 exports.extrairUsuario = function extrairUsuario(obj) {
     return new usuarioClass.Usuario(
         obj.id_usuario,
+        obj.email_usuario,
         obj.nome_usuario,
         obj.senha_usuario,
         obj.avatar_usuario,
-        obj.codigoConfirmacao_usuario,
+        obj.codigo_confirmacao_usuario,
         null,
         null);
 }
@@ -85,11 +87,11 @@ exports.getWithPass = function getUser(con, email, password, callback) {
 }
 
 exports.confirmEmail = function confirmEmailUser(con, user, code, callback) {
-    con.query(GET_CODE, [user.getEmail(), code],
+    con.query(GET_CODE, [user.email, code],
         function resultadoGetCode(err, result) {
             if (!err) {
                 if (result.length > 0) {
-                    user.setCodigoConfirmacao(null);
+                    user.codigoConfirmacao = null;
                     this.update(con, user, function(u) {
                         callback(u);
                     });
@@ -107,7 +109,7 @@ exports.confirmEmail = function confirmEmailUser(con, user, code, callback) {
 
 exports.insert = function insertUser(con, usuario, callback) {
     // tenta inserir usuário
-    con.query(INSERT, [usuario.getNome(), usuario.getEmail(), usuario.getSenha(), usuario.getCodigoConfirmacao()],
+    con.query(INSERT, [usuario.nome, usuario.email, usuario.senha, usuario.codigoConfirmacao],
         function resultadoInsert(err, result) {
             if (!err) {
                 callback(result.insertId);
@@ -121,7 +123,7 @@ exports.insert = function insertUser(con, usuario, callback) {
 
 exports.update = function updateUser(con, usuario, callback) {
     // tenta alterar usuário
-    con.query(UPDATE, [usuario.getNome(), usuario.getEmail(), usuario.getCodigoConfirmacao(), usuario.getId()],
+    con.query(UPDATE, [usuario.nome, usuario.email, usuario.codigoConfirmacao, usuario.id],
         function resultadoUpdate(err, result) {
             if (!err) {
                 callback(usuario);
@@ -136,7 +138,7 @@ exports.update = function updateUser(con, usuario, callback) {
 exports.updateConfirmationCode = function updateConfirmationCodeUser(con, user, code, callback) {
     user.setCodigoConfirmacao(code);
     // tenta alterar usuário
-    con.query(UPDATE_CONF_COD, [user.getCodigoConfirmacao(), user.getEmail()],
+    con.query(UPDATE_CONF_COD, [user.codigoConfirmacao, user.email],
         function resultadoUpdateConfirmationCode(err, result) {
             if (!err) {
                 callback(user);
@@ -149,7 +151,7 @@ exports.updateConfirmationCode = function updateConfirmationCodeUser(con, user, 
 }
 
 exports.updateLocal = function updateLocalUser(con, user, idLocal, callback) {
-    con.query(UPDATE_LOCAL, [user.getId(), user.getId(), idLocal], function(err, result) {
+    con.query(UPDATE_LOCAL, [user.id, user.id, idLocal], function(err, result) {
         if (!err) {
             callback(user);
         }

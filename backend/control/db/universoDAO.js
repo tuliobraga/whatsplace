@@ -238,13 +238,13 @@ exports.listLocals = function listLocaisUniverso(con, idUniverso, callback) {
 }
 
 exports.leaveLocal = function leaveLocal(con, idLocal, usuario, callback) {
-    con.query(DEIXAR_LOCAL, [usuario.getId(), idLocal], function(err, result) {
+    con.query(DEIXAR_LOCAL, [usuario.id, idLocal], function(err, result) {
         callback(err);
     });
 }
 
 exports.insert = function insertUniverso(con, universe, callback) {
-    con.query(INSERT, [universe.getNome(), universe.isPrivado(), universe.getAdministrador().getId()],
+    con.query(INSERT, [universe.nome, universe.privado, universe.administrador.id],
         function resultadoInsert(err, result) {
             if (!err) {
                 callback(result.insertId);
@@ -270,7 +270,7 @@ exports.delete = function deleteUniverso(con, usuario, idUniverse, callback) {
 }
 
 exports.removeUser = function(con, idUniverso, usuario, callback) {
-    con.query(REMOVE_USUARIO, [usuario.getId(), idUniverso], callback);
+    con.query(REMOVE_USUARIO, [usuario.id, idUniverso], callback);
 }
 
 exports.insertConvite = function insertConvite(con, usuario, idConvidado, idUniverso, texto, callback) {
@@ -287,7 +287,7 @@ exports.insertConvite = function insertConvite(con, usuario, idConvidado, idUniv
 }
 
 exports.listConvites = function listConvitesUniverso(con, usuario, callback) {
-    con.query(CONVITE_LIST_USERS, [usuario.getId()], function(err, result) {
+    con.query(CONVITE_LIST_USERS, [usuario.id], function(err, result) {
         if (!err) {
             var convites = [];
             for (var c in result) {
@@ -302,9 +302,9 @@ exports.listConvites = function listConvitesUniverso(con, usuario, callback) {
 }
 
 exports.acceptConvite = function acceptConviteUniverso(con, idUniverso, usuario, callback) {
-    con.query(CONVITE_UPDATE, [0, idUniverso, usuario.getId()], function(err) {
+    con.query(CONVITE_UPDATE, [0, idUniverso, usuario.id], function(err) {
         if (!err) {
-            con.query(INSERT_USUARIO, [usuario.getId(), idUniverso], callback);
+            con.query(INSERT_USUARIO, [usuario.id, idUniverso], callback);
         }
         else {
             callback(err);
@@ -313,5 +313,5 @@ exports.acceptConvite = function acceptConviteUniverso(con, idUniverso, usuario,
 }
 
 exports.refuseConvite = function refuseConviteUniverso(con, idConvite, usuario, callback) {
-    con.query(CONVITE_UPDATE, [0, idUniverso, usuario.getId()], callback);
+    con.query(CONVITE_UPDATE, [0, idUniverso, usuario.id], callback);
 }

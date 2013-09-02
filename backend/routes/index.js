@@ -1,4 +1,6 @@
 
+var usuarioClass = require('../models/usuario');
+
 /*
  * POST home page.
  */
@@ -8,7 +10,7 @@ function checkLogged(req, res) {
         res.redirect('/login');
         return false;
     }
-    else if (req.session.usuario.getCodigoConfirmacao() === null) {
+    else if (req.session.usuario.codigoConfirmacao === null) {
         res.redirect('/confirmar-conta');
         return false;
     }
@@ -34,10 +36,10 @@ exports.criarUniverso = function(req, res){
 };
 
 exports.confirmarConta = function(req, res) {
-    if (req.session.usuario === null) {
+    if (req.session.usuario === undefined) {
         res.redirect('/login');
     }
-    else if (req.session.usuario.getCodigoConfirmacao() === null) {
+    else if (req.session.usuario.codigoConfirmacao === null) {
         res.redirect('/dashboard');
     }
     else {

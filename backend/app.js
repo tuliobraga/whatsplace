@@ -34,17 +34,17 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.post('/', routes.dashboard);
-app.post('/login', routes.login);
-app.post('/nova-conta', routes.novaConta);
-app.post('/confirmar-conta', routes.confirmarConta);
-app.post('/dashboard', routes.dashboard);
-app.post('/novo-universo', routes.novoUniverso);
-app.post('/solicitacoes-universo', routes.exibirConvites);
-app.post('/criar-universo', routes.criarUniverso);
+app.get('/', routes.dashboard);
+app.get('/login', routes.login);
+app.get('/nova-conta', routes.novaConta);
+app.get('/confirmar-conta', routes.confirmarConta);
+app.get('/dashboard', routes.dashboard);
+app.get('/novo-universo', routes.novoUniverso);
+app.get('/solicitacoes-universo', routes.exibirConvites);
+app.get('/criar-universo', routes.criarUniverso);
 app.post('/in/detalhes-usuario', user.get);
 app.post('/in/login', user.authenticate);
-app.post('/in/nova-conta', user.insert);
+app.post('/in/criar-conta', user.insert);
 app.post('/in/confirmar-conta', user.confirmEmail);
 app.post('/in/selecionar-local', user.changeLocal);
 app.post('/in/enviar-mensagem', user.sendMessage);

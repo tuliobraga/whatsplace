@@ -1,6 +1,7 @@
 var nodemailer = require('nodemailer');
 var mysql = require('../control/db/connection');
 var usuarioDAO = require('../control/db/usuarioDAO');
+var usuarioClass = require('../models/usuario');
 
 exports.get = function(req, res) {
     var idUsuario = req.body.idUsuario;
@@ -13,6 +14,8 @@ exports.get = function(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     })
 }
 
@@ -73,21 +76,23 @@ function hashCode(s){
 function sendConfirmationCode(email, code, callback) {
     // send mail
     var transport = nodemailer.createTransport("SMTP", {
-        service: "Gmail",
+        host: "mail.tbrtec.com",
+        secureConnection: false,
+        port: 26,
         auth: {
-            user: "fred.pantuzza@gmail.com",
-            pass: "thf5123peruas6927"
+            user: "frederico.pantuzza@tbrtec.com",
+            pass: "thf5123"
         }
     });
     transport.sendMail({
-        from: "fred.pantuzza@gmail.com",
+        from: "frederico.pantuzza@tbrtec.com",
         to: email,
         subject: "WhatsPlace - Confirmação de e-mail",
         generateTextFromHTML: true,
         html: "Bem vindo ao WhatsPlace<br />" +
             "Insira esse código de confirmação no seu aplicativo: " + code
     }, function(err, responseStatus) {
-        if (!error) {
+        if (!err) {
             console.log(responseStatus.message); // response from the server
             console.log(responseStatus.messageId); // Message-ID value used
         }
@@ -103,7 +108,7 @@ exports.insert = function insertUser(req, res) {
     var email = req.body.email;
     var senha = req.body.senha;
     var codigoConfirmacao = hashCode(new Date().toDateString());
-    var usuario = new Usuario(null, nome, email, senha, null, codigoConfirmacao, null);
+    var usuario = new usuarioClass.Usuario(null, email, nome, senha, null, codigoConfirmacao, null, null);
 
     // connect to database
     var con = mysql.getConnection();
@@ -117,10 +122,14 @@ exports.insert = function insertUser(req, res) {
                 else {
                     res.send(500);
                 }
+                // close db connection
+                mysql.endConnection(con);
             });
         }
         else {
             res.send(500);
+            // close db connection
+            mysql.endConnection(con);
         }
     });
 }
@@ -139,6 +148,8 @@ exports.resendConfirmationCode = function resendConfirmationCodeUser(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }
 
@@ -149,7 +160,7 @@ exports.changeLocal = function(req, res) {
     var con = mysql.getConnection();
     usuarioDAO.updateLocal(con, usuario, idLocal, function(u) {
         if (u) {
-            usuarioDAO.get(con, usuario.getId(), function(u) {
+            usuarioDAO.get(con, usuario.id, function(u) {
                 if (u) {
                     req.session.usuario = u;
                     res.send(200);
@@ -162,6 +173,8 @@ exports.changeLocal = function(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }
 
@@ -171,12 +184,14 @@ exports.sendMessage = function(req, res){
     var texto = req.body.texto;
     // connect to database
     var con = mysql.getConnection();
-    usuarioDAO.sendMessage(con, texto, idUsuarioDestinatario, usuario.getId(), function(err) {
+    usuarioDAO.sendMessage(con, texto, idUsuarioDestinatario, usuario.id, function(err) {
         if (!err) {
             res.send(200);
         }
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 };

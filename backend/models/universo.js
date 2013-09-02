@@ -45,7 +45,7 @@ exports.Universo = function(id, nome, privado, administrador, locais) {
         this._locais = novosLocais;
     }
 
-    this.toJSON() = function() {
+    this.toJSON = function() {
         var locais = [];
         for (var l in this.getLocais()) {
             locais.push(l.toJSON());

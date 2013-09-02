@@ -12,6 +12,8 @@ exports.search = function searchUniverse(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }
 
@@ -30,6 +32,8 @@ exports.insert = function insertUniverse(req, res) {
         } else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }
 
@@ -45,6 +49,8 @@ exports.delete = function deleteUniverse(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }
 
@@ -59,6 +65,8 @@ exports.listUserUniverses = function listUserUniverses(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     })
 }
 
@@ -69,7 +77,7 @@ exports.listUserUniverses = function listUserUniverses(req, res) {
  */
 exports.listUsers = function listUsers(req, res) {
     var usuario = req.session.usuario;
-    var idUniverso = usuario.getUniversoAtual().getId();
+    var idUniverso = usuario.universoAtual.id;
     // connect to database
     var con = mysql.getConnection();
     universoDAO.listUsers(con, idUniverso, function(users) {
@@ -79,6 +87,8 @@ exports.listUsers = function listUsers(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }
 
@@ -89,7 +99,7 @@ exports.listUsers = function listUsers(req, res) {
  */
 exports.searchUsers = function searchUsers(req, res) {
     var usuario = req.session.usuario;
-    var idUniverso = usuario.getUniversoAtual().getId();
+    var idUniverso = usuario.universoAtual.id;
     var nome = req.body.nome;
     // connect to database
     var con = mysql.getConnection();
@@ -100,6 +110,8 @@ exports.searchUsers = function searchUsers(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }
 
@@ -110,7 +122,7 @@ exports.searchUsers = function searchUsers(req, res) {
  */
 exports.listUsersLocal = function listUsers(req, res) {
     var usuario = req.session.usuario;
-    var idUniverso = usuario.getUniversoAtual().getId();
+    var idUniverso = usuario.universoAtual.id;
     var idLocal = req.body.idLocal;
     // connect to database
     var con = mysql.getConnection();
@@ -121,6 +133,8 @@ exports.listUsersLocal = function listUsers(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }
 
@@ -131,7 +145,7 @@ exports.listUsersLocal = function listUsers(req, res) {
  */
 exports.listLocals = function listUniverseLocals(req, res) {
     var usuario = req.session.usuario;
-    var idUniverso = usuario.getUniversoAtual().getId();
+    var idUniverso = usuario.universoAtual.id;
     // connect to database
     var con = mysql.getConnection();
     universoDAO.listLocals(con, idUniverso, function(locals) {
@@ -141,6 +155,8 @@ exports.listLocals = function listUniverseLocals(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }
 
@@ -159,6 +175,8 @@ exports.insertLocal = function insertLocal(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }
 
@@ -175,6 +193,8 @@ exports.excluirLocal = function deleteLocal(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }
 
@@ -196,6 +216,8 @@ exports.leaveLocal = function leaveLocal(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }
 
@@ -216,12 +238,14 @@ exports.removeUser = function removeUserUniverse(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }
 
 exports.insertConvite = function(req, res) {
     var usuario = req.session.usuario;
-    var idUniverso = usuario.getUniversoAtual().getId();
+    var idUniverso = usuario.universoAtual.id;
     var texto = req.body.texto;
     var idConvidado = req.body.idConvidado;
     // connect to database
@@ -233,6 +257,8 @@ exports.insertConvite = function(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     })
 }
 
@@ -256,6 +282,8 @@ exports.listConvites = function(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }
 
@@ -276,6 +304,8 @@ exports.acceptConvite = function(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }
 
@@ -296,5 +326,7 @@ exports.refuseConvite = function(req, res) {
         else {
             res.send(500);
         }
+        // close db connection
+        mysql.endConnection(con);
     });
 }

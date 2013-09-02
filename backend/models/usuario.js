@@ -72,7 +72,15 @@ exports.Usuario = function(id, email, nome, senha, avatar, codigoConfirmacao, un
         this._localAtual = novoLocalAtual;
     }
 
-    this.toJSON() = function() {
+    this.toJSON = function() {
+        var universoAtual = null;
+        if (this.getUniversoAtual()) {
+            universoAtual = this.getUniversoAtual().toJSON();
+        }
+        var localAtual = null;
+        if (this.getLocalAtual()) {
+            localAtual = this.getLocalAtual().toJSON();
+        }
         var u = {
             id: this.getId(),
             nome: this.getNome(),
@@ -80,8 +88,8 @@ exports.Usuario = function(id, email, nome, senha, avatar, codigoConfirmacao, un
             senha: this.getSenha(),
             avatar: this.getAvatar(),
             codigoConfirmacao: this.getCodigoConfirmacao(),
-            universoAtual: this.getUniversoAtual().toJSON(),
-            localAtual: this.getLocalAtual().toJSON()
+            universoAtual: universoAtual,
+            localAtual: localAtual
         };
         return u;
     }
