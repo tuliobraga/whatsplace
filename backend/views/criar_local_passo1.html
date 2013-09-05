@@ -69,7 +69,7 @@
     </div>
 
     <div class="container-fluid">
-      <form name="criarLocal1" id="criarLocal1">
+      <form name="criarLocal1" id="criarLocal1" action="/criar-local-passo2" method="post">
       <div class="row-fluid">
         <div class="span12">
             <label>Universo</label>
@@ -86,7 +86,7 @@
       <hr>
       <div class="row-fluid">
         <div class="span12">
-            <input type="button" class="btn btn-primary span12" value="Próximo" onclick="Request.httpRequest('/criar-local-passo2', getFormData($('#criarLocal1')))">
+            <input type="submit" class="btn btn-primary span12" value="Próximo" >
         </div>    
       </div><!--/row-->
       </form>

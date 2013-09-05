@@ -43,7 +43,7 @@ app.get('/novo-universo', routes.novoUniverso);
 app.get('/solicitacoes-universo', routes.exibirConvites);
 app.get('/criar-universo', routes.criarUniverso);
 app.get('/criar-local-passo1', routes.criarLocal1);
-app.get('/criar-local-passo2', routes.criarLocal2);
+app.post('/criar-local-passo2', routes.criarLocal2);
 app.get('/buscar-universos', routes.buscarUniversos);
 app.get('/buscar-locais', routes.buscarLocais);
 app.get('/buscar-usuarios', routes.buscarUsuarios);
