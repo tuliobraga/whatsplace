@@ -10,7 +10,7 @@ function checkLogged(req, res) {
         res.redirect('/login');
         return false;
     }
-    else if (req.session.usuario.codigoConfirmacao === null) {
+    else if (req.session.usuario.codigoConfirmacao !== null) {
         res.redirect('/confirmar-conta');
         return false;
     }
