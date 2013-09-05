@@ -23,7 +23,7 @@
     <file path="/universo.js" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1378066952612" ignored="false" />
     <file path="/user.js" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1378099153772" ignored="false" />
     <file path="/Connection.js" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1377635157209" ignored="false" />
-    <file path="/usuarioDAO.js" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1378099694682" ignored="false" />
+    <file path="/usuarioDAO.js" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1378388786493" ignored="false" />
     <file path="/usuarioController.js" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1377636985823" ignored="false" />
     <file path="/connection.js" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1377666952071" ignored="false" />
     <file path="/universe.js" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1378099303999" ignored="false" />
@@ -33,7 +33,7 @@
     <file path="/a.js" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1377665113700" ignored="false" />
     <file path="/app.js" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1378096988430" ignored="false" />
     <file path="/index.html" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1377665589653" ignored="false" />
-    <file path="/index.js" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1378130703840" ignored="false" />
+    <file path="/index.js" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1378388991761" ignored="false" />
     <file path="/nova_conta.html" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1377684847718" ignored="false" />
     <file path="/main.js" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1377693777836" ignored="false" />
     <file path="/login.html" changelist="f23ef32e-fe9b-413b-b706-8a6dcbdb28a7" time="1377694237636" ignored="false" />
@@ -101,26 +101,7 @@
     <favorites_list name="WhatsPlace" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="45" selection-start="1927" selection-end="1927" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/routes/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="52" selection-start="268" selection-end="268" vertical-scroll-proportion="0.56666666">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -130,12 +111,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/models/rastreamento.js" />
         <option value="$PROJECT_DIR$/views/confirmar_conta.html" />
         <option value="$PROJECT_DIR$/public/js/main.js" />
         <option value="$PROJECT_DIR$/views/login.html" />
         <option value="$PROJECT_DIR$/routes/universe.js" />
-        <option value="$PROJECT_DIR$/control/db/usuarioDAO.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/nova_conta.html" />
         <option value="$PROJECT_DIR$/models/usuario.js" />
@@ -145,7 +124,9 @@
         <option value="$PROJECT_DIR$/models/convite.js" />
         <option value="$PROJECT_DIR$/routes/user.js" />
         <option value="$PROJECT_DIR$/control/db/universoDAO.js" />
+        <option value="$PROJECT_DIR$/control/db/usuarioDAO.js" />
         <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/control/db/connection.js" />
       </list>
     </option>
   </component>
@@ -225,6 +206,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WhatsPlace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="routes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -269,11 +264,11 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="Errors" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="Errors" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -343,17 +338,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24944155" sideWeight="0.6598291" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24944155" sideWeight="0.6615385" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3982906" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34017095" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33846155" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -423,25 +418,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="19" />
+      <option name="time" value="23" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/universo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="50" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/confirmar_conta.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="118" selection-start="3492" selection-end="3492" vertical-scroll-proportion="0.5" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="24" selection-start="107" selection-end="107" vertical-scroll-proportion="0.15205725" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/express/lib/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="166" column="0" selection-start="3628" selection-end="3628" vertical-scroll-proportion="3.929448" />
@@ -449,9 +429,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/nova_conta.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="79" selection-start="3331" selection-end="3331" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="92" column="79" selection-start="3331" selection-end="3331" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/universo.js">
@@ -474,23 +452,9 @@
         <state line="4" column="9" selection-start="162" selection-end="162" vertical-scroll-proportion="0.20858896" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/control/db/usuarioDAO.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="34" selection-start="4006" selection-end="4006" vertical-scroll-proportion="0.12269939">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/usuario.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="0" selection-start="757" selection-end="757" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="38" selection-start="917" selection-end="917" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -509,16 +473,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
+    <entry file="file://$PROJECT_DIR$/views/criar_local_passo1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="45" selection-start="1927" selection-end="1927" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="39.23077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/criar_local_passo2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="29" selection-start="2911" selection-end="2911" vertical-scroll-proportion="-12.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/db/usuarioDAO.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="0" selection-start="4321" selection-end="4321" vertical-scroll-proportion="2.5398774">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="52" selection-start="268" selection-end="268" vertical-scroll-proportion="0.56666666">
+        <state line="49" column="80" selection-start="1092" selection-end="1092" vertical-scroll-proportion="0.8476454">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/db/connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="19" selection-start="193" selection-end="193" vertical-scroll-proportion="0.23545706">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="26" selection-start="3219" selection-end="3219" vertical-scroll-proportion="0.4875346">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="38" selection-start="1894" selection-end="1894" vertical-scroll-proportion="0.565097">
           <folding />
         </state>
       </provider>

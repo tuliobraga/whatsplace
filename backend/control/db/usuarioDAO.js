@@ -116,6 +116,7 @@ exports.insert = function insertUser(con, usuario, callback) {
                 callback(result.insertId);
             }
             else {
+                console.log(err);
                 callback(null);
             }
         }

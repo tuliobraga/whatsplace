@@ -44,8 +44,10 @@ exports.criarLocal1 = function(req, res){
 };
 
 exports.criarLocal2 = function(req, res){
+    var nome = req.body.nome;
+    var universo = req.body.universo;
     if (checkLogged(req, res)) {
-        res.render('criar_local_passo2.html');
+        res.render('criar_local_passo2.html', {nome: nome, universo: universo});
     }
 };
 
