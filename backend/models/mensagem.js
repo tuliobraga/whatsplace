@@ -1,48 +1,48 @@
 exports.Mensagem = function(id, texto, remetente, destinatario, horario) {
-    this._id = id;
-    this._texto = texto;
-    this._remetente = remetente;
-    this._destinatario = destinatario;
-    this._horario = horario;
+    this.id = id;
+    this.texto = texto;
+    this.remetente = remetente;
+    this.destinatario = destinatario;
+    this.horario = horario;
 
     this.getId = function() {
-        return this._id;
+        return this.id;
     }
 
     this.getTexto = function() {
-        return this._texto;
+        return this.texto;
     }
 
     this.getRemetente = function() {
-        return this._remetente;
+        return this.remetente;
     }
 
     this.getDestinatario = function() {
-        return this._destinatario;
+        return this.destinatario;
     }
 
     this.getHorario = function() {
-        return this._horario;
+        return this.horario;
     }
 
     this.setId = function(novoId) {
-        this._id = novoId;
+        this.id = novoId;
     }
 
     this.setTexto = function(novoTexto) {
-        this._texto = novoTexto;
+        this.texto = novoTexto;
     }
 
     this.setRemetente = function(novoRemetente) {
-        this._universo = novoRemetente;
+        this.universo = novoRemetente;
     }
 
     this.setDestinatario = function(novoDestinatario) {
-        this._convidado = novoDestinatario;
+        this.convidado = novoDestinatario;
     }
 
     this.setHorario = function(novoHorario) {
-        this._pendente = novoHorario;
+        this.pendente = novoHorario;
     }
 
 }

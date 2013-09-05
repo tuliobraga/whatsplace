@@ -1,75 +1,75 @@
 exports.Usuario = function(id, email, nome, senha, avatar, codigoConfirmacao, universoAtual, localAtual) {
-    this._id = id;
-    this._email = email;
-    this._nome = nome;
-    this._senha = senha;
-    this._avatar = avatar;
-    this._codigoConfirmacao = codigoConfirmacao;
-    this._universoAtual = universoAtual;
-    this._localAtual = localAtual;
+    this.id = id;
+    this.email = email;
+    this.nome = nome;
+    this.senha = senha;
+    this.avatar = avatar;
+    this.codigoConfirmacao = codigoConfirmacao;
+    this.universoAtual = universoAtual;
+    this.localAtual = localAtual;
 
     this.getId = function() {
-        return this._id;
+        return this.id;
     }
 
     this.getEmail = function() {
-        return this._email;
+        return this.email;
     }
 
     this.getNome = function() {
-        return this._nome;
+        return this.nome;
     }
 
     this.getSenha = function() {
-        return this._senha;
+        return this.senha;
     }
 
     this.getAvatar = function() {
-        return this._avatar;
+        return this.avatar;
     }
 
     this.getCodigoConfirmacao = function() {
-        return this._codigoConfirmacao;
+        return this.codigoConfirmacao;
     }
 
     this.getUniversoAtual = function() {
-        return this._universoAtual;
+        return this.universoAtual;
     }
 
     this.getLocalAtual = function() {
-        return this._localAtual;
+        return this.localAtual;
     }
 
     this.setId = function(novoId) {
-        this._id = novoId;
+        this.id = novoId;
     }
 
     this.setEmail = function(novoEmail) {
-        this._email = novoEmail;
+        this.email = novoEmail;
     }
 
     this.setNome = function(novoNome) {
-        this._nome = novoNome;
+        this.nome = novoNome;
     }
 
     this.setSenha = function(novaSenha) {
-        this._senha = novaSenha;
+        this.senha = novaSenha;
     }
 
     this.setAvatar = function(novoAvatar) {
-        this._avatar = novoAvatar;
+        this.avatar = novoAvatar;
     }
 
     this.setCodigoConfirmacao = function(novoCodigoConfirmacao) {
-        this._codigoConfirmacao = novoCodigoConfirmacao;
+        this.codigoConfirmacao = novoCodigoConfirmacao;
     }
 
     this.setUniversoAtual = function(novoUniversoAtual) {
-        this._universoAtual = novoUniversoAtual;
+        this.universoAtual = novoUniversoAtual;
     }
 
     this.setLocalAtual = function(novoLocalAtual) {
-        this._localAtual = novoLocalAtual;
+        this.localAtual = novoLocalAtual;
     }
 
     this.toJSON = function() {

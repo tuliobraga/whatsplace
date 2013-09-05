@@ -6,7 +6,7 @@ var usuarioClass = require('../models/usuario');
  */
 
 function checkLogged(req, res) {
-    if (req.session.usuario === null) {
+    if (req.session.usuario === undefined) {
         res.redirect('/login');
         return false;
     }

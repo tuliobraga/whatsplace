@@ -1,48 +1,48 @@
 exports.Universo = function(id, nome, privado, administrador, locais) {
-	this._id = id;
-    this._nome = nome;
-    this._privado = privado;
-    this._administrador = administrador;
-    this._locais = locais;
+	this.id = id;
+    this.nome = nome;
+    this.privado = privado;
+    this.administrador = administrador;
+    this.locais = locais;
 	
 	this.getId = function() {
-		return this._id;
+		return this.id;
 	}
 	
 	this.getNome = function() {
-		return this._nome;
+		return this.nome;
 	}
 	
 	this.isPrivado = function() {
-		return this._privado;
+		return this.privado;
 	}
 	
 	this.getAdministrador = function() {
-		return this._administrador;
+		return this.administrador;
 	}
 
     this.getLocais = function() {
-        return this._locais;
+        return this.locais;
     }
 	
 	this.setId = function(novoId) {
-        this._id = novoId;
+        this.id = novoId;
 	}
 	
 	this.setNome = function(novoNome) {
-        this._nome = novoNome;
+        this.nome = novoNome;
 	}
 	
 	this.setPrivado = function(novoPrivado) {
-        this._privado = novoPrivado;
+        this.privado = novoPrivado;
 	}
 	
 	this.setAdministrador = function(novoAdministrador) {
-        this._administrador = novoAdministrador;
+        this.administrador = novoAdministrador;
 	}
 
     this.setLocais = function(novosLocais) {
-        this._locais = novosLocais;
+        this.locais = novosLocais;
     }
 
     this.toJSON = function() {
