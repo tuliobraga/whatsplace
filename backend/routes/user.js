@@ -28,12 +28,7 @@ exports.authenticate = function(req, res) {
     usuarioDAO.getWithPass(con, email, senha, function(u) {
         if (u) {
             req.session.usuario = u;
-            if (u.getCodigoConfirmacao()) {
-                res.redirect('/confirmar-conta');
-            }
-            else {
-                res.send(200, u.toJSON());
-            }
+            res.send(200, u.toJSON());
         }
         else {
             res.send(500, 'E-mail ou senha inválidos');
