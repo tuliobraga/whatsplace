@@ -111,16 +111,16 @@
         });
         
         function populateTable(response) {
-            $('.datatable table tbody').empty();
+            $('table.datatable tbody').empty();
             for(var idx in response) {
-                var row = $('<tr><td>'+response[idx]['nome']+'</td></tr>');
-                $('.datatable table tbody').append(row);
+                var row = $('<tr><td><a href="/detalhes-usuario/'+response[idx]['id']+'>'+response[idx]['nome']+'</a></td></tr>');
+                $('table.datatable tbody').append(row);
             }
         }
 
         function search() {
             var usuario = $('input.search-input').val();
-            Request.httpRequest('/listar-usuarios', {nome: usuario}, populateTable);
+            Request.httpRequest('/in/buscar-usuarios', {nome: usuario}, populateTable);
         }
     </script>
   </body>

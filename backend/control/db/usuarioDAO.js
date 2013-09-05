@@ -92,7 +92,7 @@ exports.confirmEmail = function confirmEmailUser(con, user, code, callback) {
             if (!err) {
                 if (result.length > 0) {
                     user.codigoConfirmacao = null;
-                    this.update(con, user, function(u) {
+                    exports.update(con, user, function(u) {
                         callback(u);
                     });
                 }
@@ -101,6 +101,7 @@ exports.confirmEmail = function confirmEmailUser(con, user, code, callback) {
                 }
             }
             else {
+                console.log(err);
                 callback(null);
             }
         }
@@ -129,6 +130,7 @@ exports.update = function updateUser(con, usuario, callback) {
                 callback(usuario);
             }
             else {
+                console.log(err);
                 callback(null);
             }
         }

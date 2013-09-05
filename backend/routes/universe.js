@@ -1,5 +1,6 @@
 var mysql = require('../control/db/connection');
 var universoDAO = require('../control/db/universoDAO');
+var universoClass = require('../models/universo');
 
 exports.search = function searchUniverse(req, res) {
     var nome = req.body.nome;
@@ -21,14 +22,14 @@ exports.insert = function insertUniverse(req, res) {
     var nome = req.body.nome;
     var privado = req.body.privado;
     var administrador = req.session.usuario;
-    var universo = new Universo(null, nome, privado, administrador);
+    var universo = new universoClass.Universo(null, nome, privado, administrador);
 
     // connect to database
     var con = mysql.getConnection();
     universoDAO.insert(con, universo, function(id) {
         if (id) {
             universo.setId(id);
-            res.send(200);
+            res.send(200, {message: "Universo criado com sucesso!"});
         } else {
             res.send(500);
         }

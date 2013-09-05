@@ -6,8 +6,8 @@ const INSERT_USUARIO        = 'INSERT INTO usuario_participa_universo (id_usuari
 const REMOVE_USUARIO        = 'DELETE FROM usuario_participa_universo WHERE id_usuario = ? AND id_universo = ?';
 const GET_LOCAL             = 'SELECT local.* FROM local WHERE local.id_local = ?';
 const DEIXAR_LOCAL          = 'UPDATE rastreamento SET data_saida = CURRENT_TIMESTAMP() WHERE data_saida IS NULL AND id_usuario = ? AND id_local = ?';
-const SEARCH                = 'SELECT universo.* FROM universo WHERE universo.privado_universo = 0 AND universo.nome_universo LIKE "%?%"';
-const LIST                  = 'SELECT universo.* FROM universo WHERE universo.id_usuario = ?';
+const SEARCH                = 'SELECT universo.* FROM universo WHERE universo.privado_universo = 0 AND universo.nome_universo LIKE ?';
+const LIST                  = 'SELECT universo.* FROM universo WHERE universo.administrador_universo = ?';
 const LIST_LOCALS           = 'SELECT local.* FROM local WHERE local.universo_local = ?';
 const LIST_USERS            = 'SELECT usuario.* FROM usuario ' +
                             'INNER JOIN rastreamento ON rastreamento.id_usuario = usuario.id_usuario ' +
@@ -129,30 +129,44 @@ exports.getLocal = function(con, idLocal, callback) {
 }
 
 exports.searchUniverse = function searchUniverse(con, nome, callback) {
-    con.query(SEARCH, [nome], function(err, result) {
+    con.query(SEARCH, ["%"+nome+"%"], function(err, result) {
         if (!err) {
             var universos = [];
-            for (var u in result) {
-                universos.push(extrairUniverso(u));
+            console.log(result);
+            for (var i in result) {
+                var u = result[i];
+                universos.push({
+                    id: u.id_universo,
+                    nome: u.nome_universo,
+                    privado: u.privado_universo
+                });
             }
             callback(universos);
         }
         else {
+            console.log(err);
             callback(null);
         }
     });
 }
 
 exports.listUserUniverses = function listUserUniverses(con, usuario, callback) {
-    con.query(LIST, [usuario.getId()], function(err, result) {
+    con.query(LIST, [usuario.id], function(err, result) {
         if (!err) {
             var universos = [];
-            for (var u in result) {
-                universos.push(extrairUniverso(u));
+            for (var i in result) {
+                var u = result[i];
+                universos.push({
+                    id: u.id_universo,
+                    nome: u.nome_universo,
+                    privado: u.privado_universo
+                });
+//                universos.push(extrairUniverso(u));
             }
             callback(universos);
         }
         else {
+            console.log(err);
             callback(null);
         }
     });
@@ -250,6 +264,7 @@ exports.insert = function insertUniverso(con, universe, callback) {
                 callback(result.insertId);
             }
             else {
+                console.log(err);
                 callback(null);
             }
         }

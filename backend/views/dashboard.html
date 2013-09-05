@@ -89,12 +89,9 @@
       </div><!--/row-->
       <div class="row-fluid">
           <label>Universo</label>
-          <select class="span12">
-            <option selected>CEFET-MG Campus II</option>
-            <option>Hospital Santa Casa</option>
-          </select>
+          <select name="universo" id="universo" class="span12"></select>
       </div>
-      <div class="row-fluid">
+<!--      <div class="row-fluid">
         <table class="span12 table">
               <tbody>
                   <tr>
@@ -110,7 +107,8 @@
                   </tr>
               </tbody>
         </table>
-      </div>
+      </div>-->
+<hr>
       <div class="row-fluid">
           <input type="button" class="span6 btn btn-primary" value="Solicitações (2)"/>
           <br />
@@ -129,6 +127,19 @@
     <script src="./js/jquery-1.10.1.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/main.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var success = function(response) {
+                var option;
+                for(var idx in response) {
+                    option = $('<option value="'+response[idx].id+'">'+response[idx].nome+'</option>')
+                    $('select#universo').append(option);
+                }
+            };
+
+            Request.httpRequest('/in/listar-universos', {}, success);
+        });
+    </script>
 
   </body>
 </html>

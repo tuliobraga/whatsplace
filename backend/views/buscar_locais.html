@@ -113,14 +113,14 @@
         function populateTable(response) {
             $('.datatable table tbody').empty();
             for(var idx in response) {
-                var row = $('<tr><td>'+response[idx]['nome']+'</td></tr>');
+                var row = $('<tr><td><a href="/detalhes-local/'+response[idx]['id']+'>'+response[idx]['nome']+'</a></td></tr>');
                 $('.datatable table tbody').append(row);
             }
         }
 
         function search() {
             var local = $('input.search-input').val();
-            Request.httpRequest('/listar-locais', {nome: local}, populateTable);
+            Request.httpRequest('/in/buscar-locais', {nome: local}, populateTable);
         }
     </script>
   </body>

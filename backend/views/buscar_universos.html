@@ -111,16 +111,16 @@
         });
         
         function populateTable(response) {
-            $('.datatable table tbody').empty();
+            $('table.datatable tbody').empty();
             for(var idx in response) {
-                var row = $('<tr><td>'+response[idx]['nome']+'</td></tr>');
-                $('.datatable table tbody').append(row);
+                var row = $('<tr><td><a href="/detalhes-universo/'+response[idx]['id']+'">'+response[idx]['nome']+'</a></td></tr>');
+                $('table.datatable tbody').append(row);
             }
         }
 
         function search() {
             var universo = $('input.search-input').val();
-            Request.httpRequest('/listar-universos', {nome: universo}, populateTable);
+            Request.httpRequest('/in/buscar-universos', {nome: universo}, populateTable);
         }
     </script>
   </body>

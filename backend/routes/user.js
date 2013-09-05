@@ -47,7 +47,7 @@ exports.confirmEmail = function(req, res) {
     usuarioDAO.confirmEmail(con, usuario, codigo, function(u) {
         if (u) {
             req.session.usuario = u;
-            res.send(200, u.toJSON());
+            res.send(200, {message: "Confirmado com sucesso!"});
         }
         else {
             res.send(500, 'Código inválido');
@@ -115,6 +115,7 @@ exports.insert = function insertUser(req, res) {
                     res.send(200);
                 }
                 else {
+                    console.log(err);
                     res.send(500);
                 }
                 // close db connection
